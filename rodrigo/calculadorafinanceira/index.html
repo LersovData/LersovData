@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Rentabilidade por Corredor</title>
+</head>
+
+<body>
+    <h1>Calculadora de Rentabilidade por Corredor</h1>
+    <p><b>Receita Bruta (R):</b> Total de vendas realizadas no corredor em uma semana.</p>
+    Receita Bruta por corredor: <input type="number" id="input_receita_bruta"><br>
+    <p><b>Custo dos Produtos Vendidos (CPV):</b>Soma dos custos de aquisição dos produtos vendidos nesse corredor.</p>
+    Custo dos Produtos Vendidos: <input type="number" id="input_custo_produtos"><br>
+    <p><b>Custos Operacionais (CO):</b>Despesas como manutenção, limpeza, iluminação, etc.</p>
+    Custos Operacionais: <input type="number" id="input_custo_operacionais"><br>
+    <p><b>Número de Clientes (NC): </b>Total de clientes que passaram pelo corredor.</p>
+    Número de Clientes: <input type="number" id="input_nm_clientes"><br><br>
+    <button onclick="analiseCorredor()">Análise corredor</button><br>
+    <br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function analiseCorredor() {
+        var receita_bruta = Number(input_receita_bruta.value)
+        var custo_produtos = Number(input_custo_produtos.value)
+        var custo_operacionais = Number(input_custo_operacionais.value)
+        var nm_clientes = Number(input_nm_clientes.value)
+
+        var lucro_liquido = (receita_bruta - custo_produtos - custo_operacionais) / nm_clientes
+
+        var mensagem = `O lucro líquido por cliente neste corredor é de R$ ${lucro_liquido}. `
+        if (lucro_liquido == 0) {
+            mensagem += "O resultado está neutro. Considere ações para melhorar a rentabilidade e evitar prejuízos futuros."
+            div_mensagem.style.color = "black"
+        }
+
+        if (lucro_liquido < 0) {
+            mensagem += "Cuidado! A operação está gerando prejuízo. É hora de reavaliar custos e estratégias de venda."
+            div_mensagem.style.color = "red"
+        }
+
+        if (lucro_liquido > 0) {
+            mensagem += "Excelente! A operação está lucrativa e vale a pena continuar otimizando para aumentar ainda mais os ganhos."
+            div_mensagem.style.color = "green"            
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>
