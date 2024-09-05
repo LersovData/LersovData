@@ -5,25 +5,30 @@ USE clientes_lersov;
 CREATE TABLE clientes (
   idCliente INT PRIMARY KEY AUTO_INCREMENT,
   nome_da_empresa VARCHAR(45),
+  nome_responsavel VARCHAR(45),
   endereco VARCHAR(50),
   telefone VARCHAR(20),
-  email VARCHAR(45)
+  email VARCHAR(45),
+  senha VARCHAR(20),
+  CNPJ VARCHAR(15)
 );
+drop table clientes;
 
+INSERT INTO clientes (nome_da_empresa, nome_responsavel, endereco, telefone, email, senha, CNPJ) 
+VALUES 
+('Supermercados BH', 'Luiz Gama Filho', 'Rua da Bahia, 123 Belo Horizonte - MG', '(31) 3333-4444', 'bh@supermercado.com.br', 'senha_bh', '12345678901234'),
+('Assaí','José Fernando Augusto', 'Avenida do Contorno, 456 São Paulo - SP', '(31) 4444-5555', 'assaí@supermercado.com.br', 'senha_assai', '98765432109876'),
+('Pão de Açúcar','Epaminondas Soares da Costa', 'Rua do Ouvidor, 789 Rio de Janeiro - RJ', '(11) 5555-6666', 'paodeacucar@supermercado.com.br', 'senha_paodeacucar', '11122233344455'),
+('St Marche','Glauco Vieira Machado', 'Avenida Brigadeiro Faria Lima, 901 São Paulo - SP', '(11) 6666-7777', 'stmarche@supermercado.com.br', 'senha_stmarche', '55566677788899'),
+('Irmãos Muffato', 'Nelson Muffato', 'Rua 24 horas, 204 Curitiba - PR', '(43) 3457-3456', 'irmaosmuffato@muffato.com.br', 'senha_muffato', '12358974145678');  
 
-INSERT INTO clientes (nome_da_empresa, endereco, telefone, email)
-VALUES
-  ('Supermercados BH', 'Rua dos Mercados, 123 - Belo Horizonte, MG', 1134567890, 'contato@bhsupermercado.com.br'),
-  ('Carrefour Brasil', 'Avenida das Nações, 456 - Rio de Janeiro, RJ', 2198765432, 'atendimento@carrefourbrasil.com.br'),
-  ('Pão de Açúcar', 'Rua do Comércio, 789 - São Paulo, SP', 3134567890, 'contato@paodeacucar.com.br'),
-  ('St Marche', 'Avenida do Estado, 901 - São Paulo, SP', 7134567890, 'atendimento@stmarche.com.br'),
-  ('Assaí', 'Rua dos Supermercados, 111 - Curitiba, PR', 4134567890, 'contato@assai.com.br');
-  
   SELECT * FROM clientes WHERE nome_da_empresa = 'Assaí';
   
   SELECT * FROM clientes WHERE endereco LIKE '%São Paulo%';
   
   SELECT email FROM clientes ORDER BY email DESC;
+  
+  SELECT * FROM clientes WHERE nome_responsavel LIKE '%a';
   
   
   
