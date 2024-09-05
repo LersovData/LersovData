@@ -13,9 +13,9 @@ void loop() { // Função que será executada continuamente.
 
 
   if( estadoSensor == LOW){ // Se o valor lido pelo sensor for 0 (LOW) (Ele será LOW caso alguma coisa passar na frente do sensor)
-    Serial.println(HIGH); // Exibir essa mensagem no monitor serial
+    Serial.println(1); // Exibir essa mensagem no monitor serial
     } else { // Se o valor lido for diferente de 0 (1 - HIGH) (Ele será HIGH se nada passar na frente dele)
-      Serial.println(LOW); // Exibir essa mensagem no monitor serial 
+      Serial.println(0); // Exibir essa mensagem no monitor serial 
     }
 
     delay(1000); // Pausa o código por 1 segundo, iniciando o loop novamente após a contagem do tempo.
