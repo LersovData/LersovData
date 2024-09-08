@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador financeiro</title>
+</head>
+<body>
+    <p>
+        Insira a quantidade média de clientes por mês: <input type="number" id="input_qtdclientes">
+    </p>
+    <p>
+        Insira o valor médio de compra por cliente (em R$): <input type="number" id="input_valorcompra">
+    </p>
+    <button onclick="calcular()">Calcular</button>
+    <p>
+        Com os serviços da Lersov Data, o cliente recebe dados que podem o ajudar a tomar as melhores decisões de negócio para seu estabelecimento (por exemplo, a organização das gôndolas e dos estoques), melhorando a eficiência operacional e satisfação geral do público, que interfere diretamente no lucro da empresa. <br>
+        De acordo com a pesquisa da Hibou, 35.5% dos clientes participantes da pesquisa desistem de fazer negócios com uma empresa depois de ter uma experiência ruim (falta de produto no estoque ou mau atendimento, por exemplo)
+    </p>
+    <p id="p_resultado"><p>
+</body>
+</html>
+<script>
+    function calcular(){
+        var qtdCliente = Number(input_qtdclientes.value)
+        var valorCompra = Number(input_valorcompra.value)
+        var porcentagemDesistencia = 0.355 
+        var qtdClientesDesistentes = qtdCliente * porcentagemDesistencia
+        var lucroOriginal = qtdCliente * valorCompra 
+        var lucroPerdido = qtdClientesDesistentes * valorCompra
+
+
+        console.log(qtdClientesDesistentes)
+        p_resultado.innerHTML = `Com ${qtdCliente} clientes por mês, e cerca de R$${valorCompra} em compras para cada um, é possível que você esteja perdendo até R$${lucroPerdido} por mês caso exista algum problema que leve o cliente a desistir da compra, enquanto você poderia estar lucrando aproximadamente R$${lucroOriginal}.`
+
+    }
+</script>
