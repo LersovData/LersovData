@@ -63,6 +63,5 @@ insert into dadosMensais (mes, quantidadePessoas) values
     ('Novembro', 734),
     ('Dezembro', 927);
     
--- inserir mercado avaliado? talvez corredor
 
 select mes as 'Mês', quantidadePessoas as 'Quantidade total de pessoas' from dadosMensais;
