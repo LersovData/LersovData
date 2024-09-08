@@ -12,7 +12,6 @@ CREATE TABLE clientes (
   senha VARCHAR(20),
   CNPJ VARCHAR(15)
 );
-drop table clientes;
 
 INSERT INTO clientes (nome_da_empresa, nome_responsavel, endereco, telefone, email, senha, CNPJ) 
 VALUES 
@@ -108,6 +107,9 @@ WHERE descricao_corredor = 'Congelados';
 SELECT numero_do_corredor
 FROM corredores
 WHERE nome_do_mercado = 'Carrefour Brasil';
+
+
+
 
 
 
