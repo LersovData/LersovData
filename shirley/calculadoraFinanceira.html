@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+        <h2>Calculadora Financeira de Corredor</h2>
+        <br>
+        Número de pessoas que passam pelo corredor:
+        <input type="number" id="ipt_numPessoas">
+        <br>
+        Número de produtos vendidos no corredor:
+        <input type="number" id="ipt_produtosVendidos">
+        <br>
+        Preço médio dos produtos vendidos (R$):
+        <input type="number" id="ipt_precoMedioProduto">
+        <br>
+        <button onclick="calcular()">Calcular</button>
+        <br>
+        <div id="resultado"></div>
+    </div>
+
+</body>
+</html>
+
+<script>
+    function calcular() {
+        var numPessoas = Number(ipt_numPessoas.value);
+        var produtosVendidos = Number(ipt_produtosVendidos.value);
+        var precoMedioProduto = Number(ipt_precoMedioProduto.value);
+            
+        var taxaConversao = (produtosVendidos / numPessoas) * 100;
+        var receitaTotal = produtosVendidos * precoMedioProduto;
+        var produtosNaoVendidos = numPessoas - produtosVendidos;
+        var resultadoTexto = `
+            <p>Taxa de Conversão de Vendas: ${taxaConversao}%</p>
+            <p>Receita Total: R$ ${receitaTotal}</p>
+            <p>Produtos Não Vendidos: ${produtosNaoVendidos} pessoas passaram sem comprar</p>`;
+             if (taxaConversao < 60) {
+                resultadoTexto += "<p>Nossa sugestão: Considere investir em promoções ou na disposição de produtos para aumentar a conversão.</p>";
+            } else {
+                resultadoTexto += "<p>A taxa de conversão está excelente. Você está mantendo um ótimo lucro.</p>";
+            }
+            resultado.innerHTML = resultadoTexto;
+    }
+</script>
