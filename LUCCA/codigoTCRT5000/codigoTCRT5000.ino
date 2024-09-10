@@ -11,13 +11,19 @@ void setup() { // Função que será executada uma vez quando energizar o Arduin
 }
 
 void loop() { // Função que será executada continuamente.
-  int estadoSensor = digitalRead(PINO_SENSOR_TCRT5000); // Leitura digital da porta D0
-
+  int estadoSensor = digitalRead(PINO_SENSOR_TCRT5000); // Leitura digital da porta 7
 
   if(estadoSensor == LOW){ // Se o valor lido pelo sensor for 0 (LOW) (Ele será LOW caso alguma coisa passar na frente do sensor)
-    contagemPessoas++;       // A contagem aumenta em 1
+    contagemPessoas += 3;       // A contagem de pessoas aumenta em 1
+    Serial.print("MédiaMáxCorredor:");   // Define valor máximo a ser mostrado no gráfico
+    Serial.print(20);                    
+    Serial.print(" ");
+    Serial.print("Contagem:");
     Serial.println(contagemPessoas); // Exibe a contagem de pessoas
-    } 
+    Serial.print("MédiaMínCorredor:"); // Define valor mínimo a ser mostrado no gráfico
+    Serial.print(7);
+    Serial.print(" ");
 
+  } 
     delay(1000); // Pausa o código por 1 segundo, iniciando o loop novamente após a contagem do tempo.
 }
