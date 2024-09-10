@@ -14,8 +14,8 @@
         Número de produtos vendidos no corredor:
         <input type="number" id="ipt_produtosVendidos">
         <br>
-        Preço médio dos produtos vendidos (R$):
-        <input type="number" id="ipt_precoMedioProduto">
+        Preço do produto vendido (R$):
+        <input type="number" id="ipt_precoProduto">
         <br>
         <button onclick="calcular()">Calcular</button>
         <br>
@@ -29,7 +29,7 @@
     function calcular() {
         var numPessoas = Number(ipt_numPessoas.value);
         var produtosVendidos = Number(ipt_produtosVendidos.value);
-        var precoMedioProduto = Number(ipt_precoMedioProduto.value);
+        var precoMedioProduto = Number(ipt_precoProduto.value);
             
         var taxaConversao = (produtosVendidos / numPessoas) * 100;
         var receitaTotal = produtosVendidos * precoMedioProduto;
@@ -38,11 +38,53 @@
             <p>Taxa de Conversão de Vendas: ${taxaConversao}%</p>
             <p>Receita Total: R$ ${receitaTotal}</p>
             <p>Produtos Não Vendidos: ${produtosNaoVendidos} pessoas passaram sem comprar</p>`;
-             if (taxaConversao < 60) {
+
+            if (taxaConversao < 60) {
                 resultadoTexto += "<p>Nossa sugestão: Considere investir em promoções ou na disposição de produtos para aumentar a conversão.</p>";
             } else {
                 resultadoTexto += "<p>A taxa de conversão está excelente. Você está mantendo um ótimo lucro.</p>";
             }
+
+            if (taxaConversao >= 0 && taxaConversao < 6) {
+                resultadoTexto += `Essa é uma taxa de conversão <span style="color: red;">muito baixa</span>.<br>
+                    <br>
+                    Aqui estão algumas medidas que você pode tomar com base nisso: <br>
+                    - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
+                    - Realizar promoções para queima de estoque. <br>
+                    <br>
+                    Cuidados a serem tomados: <br>
+                    - O produto pode estar ocupando o espaço de produtos mais lucrativos. <br>
+                    - <span style="color: red;">Cuidado!</span> Pode haver perda de produtos por data de validade. <br>
+                    <br>`
+            }
+
+            if (taxaConversao >= 0 && taxaConversao < 25) {
+                resultadoTexto += `Essa é uma taxa de conversão <span style="color: orange;">razoável</span>. <br>
+                    <br>
+                    <span style="color: red;">${taxaConversao}%</span> dos clientes buscam melhores preços e promoções. Talvez preparar campanhas de promoção seja o que falte para promover a visibilidade desse produto e <span style="color: green;">aumentar</span> a sua taxa de conversão.`
+            }
+
+            if (taxaConversao >= 25 && taxaConversao < 50) {
+                resultadoTexto += `Essa é uma <span style="color: rgb(201, 204, 10);">boa taxa de conversão</span>.<br>
+                    <br>
+                    Esse produto atende ao nível de vendas esperado. É um produto <span style="color: green;">seguro</span> de se ter no supermercado.`
+            }
+
+            if (taxaConversao >= 50 && taxaConversao < 75) {
+                resultadoTexto += `Essa é uma taxa de conversão <span style="color: yellowgreen;">alta</span>.<br>
+                    <br>
+                    Atente-se a velocidade de re-estoque deste produto. É um produto <span style="color: green;">muito valioso</span> para manter no supermercado.`
+            }
+
+            if (taxaConversao >= 75) {
+                resultadoTexto += `Essa é uma taxa de conversão <span style="color: green;">extremamente alta</span>. <br>
+                    <br>
+                    O produto é um completo <span style="color: green;">sucesso</span>.
+                    A marca e o supermercado podem ter muito a ganhar com parcerias para vendas deste produto entre outros.
+                    <br>`
+            }
+
+            resultadoTexto += `<hr>`
             resultado.innerHTML = resultadoTexto;
     }
 </script>
