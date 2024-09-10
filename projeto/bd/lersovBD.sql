@@ -22,10 +22,10 @@ CREATE TABLE sensorPresenca(
 	idSensorPresenca INT PRIMARY KEY AUTO_INCREMENT,
 	quantidadePessoa INT,
 	data_ultima_leitura datetime NOT NULL,
-	nomeCorredo VARCHAR(45) NOT NULL
+	nomeCorredor VARCHAR(45) NOT NULL
 );
 
-INSERT INTO sensorPresenca (quantidadePessoa, data_ultima_leitura, nomeCorredo) 
+INSERT INTO sensorPresenca (quantidadePessoa, data_ultima_leitura, nomeCorredor) 
 VALUES 
 (5, '2024-09-08 08:45:00', 'Corredor A'),
 (3, '2024-09-08 09:15:00', 'Corredor B'),
@@ -37,7 +37,7 @@ SELECT * FROM sensorPresenca;
 
 SELECT * FROM sensorPresenca WHERE quantidadePessoa > 5;
 
-SELECT nomeCorredo, quantidadePessoa 
+SELECT nomeCorredor, quantidadePessoa 
 FROM sensorPresenca 
 ORDER BY quantidadePessoa DESC;
 
@@ -54,11 +54,11 @@ CREATE TABLE produto (
     preco DECIMAL(10, 2) NOT NULL,
     categoria VARCHAR(100),
     data_criacao DATE,
-    nomeCorredo VARCHAR(45)
+    nomeCorredor VARCHAR(45)
 );
 
 
-INSERT INTO produto (nome, descricao, preco, categoria, data_criacao, nomeCorredo) VALUES
+INSERT INTO produto (nome, descricao, preco, categoria, data_criacao, nomeCorredor) VALUES
 ('Camiseta Básica', 'Camiseta de algodão, disponível em várias cores', 29.90, 'Roupas', '2024-09-01', 'azul'),
 ('Tênis Esportivo', 'Tênis confortável para corrida e caminhada', 159.90, 'Calçados', '2024-09-02', 'preto'),
 ('Mochila Escolar', 'Mochila com vários compartimentos, ideal para estudantes', 89.90, 'Acessórios', '2024-09-03', 'vermelho'),
@@ -70,7 +70,7 @@ SELECT * FROM produto;
 SELECT * FROM produto WHERE categoria = 'Eletrônicos';
 SELECT * FROM produto WHERE preco < 100.00;
 SELECT * FROM produto WHERE data_criacao = '2024-09-01';
-SELECT * FROM produto WHERE nomeCorredo = 'azul';
+SELECT * FROM produto WHERE nomeCorredor = 'azul';
 SELECT * FROM produto
 ORDER BY preco DESC;
 
@@ -81,10 +81,10 @@ CREATE TABLE dadosMensais (
 	idDadosMensais INT PRIMARY KEY AUTO_INCREMENT,
     mes varchar(9) NOT NULL,
     quantidadePessoas INT NOT NULL,
-    nomeCorredo VARCHAR(45) NOT NULL
+    nomeCorredor VARCHAR(45) NOT NULL
 );
    
-INSERT INTO dadosMensais (mes, quantidadePessoas, nomeCorredo) 
+INSERT INTO dadosMensais (mes, quantidadePessoas, nomeCorredor) 
 VALUES 
 ('Janeiro', 1500, 'Corredor A'),
 ('Fevereiro', 1300, 'Corredor B'),
@@ -102,32 +102,27 @@ VALUES
 
 SELECT * FROM dadosMensais;
 
-SELECT nomeCorredo, quantidadePessoas 
+SELECT nomeCorredor, quantidadePessoas 
 FROM dadosMensais 
 WHERE mes = 'Agosto' 
 ORDER BY quantidadePessoas DESC;
 
-SELECT mes, nomeCorredo, quantidadePessoas 
+SELECT mes, nomeCorredor, quantidadePessoas 
 FROM dadosMensais 
 WHERE quantidadePessoas > 1600;
 
 SELECT mes, quantidadePessoas 
 FROM dadosMensais 
-WHERE nomeCorredo = 'Corredor A' 
+WHERE nomeCorredor = 'Corredor A' 
 ORDER BY quantidadePessoas DESC;
 
-SELECT nomeCorredo, quantidadePessoas 
+SELECT nomeCorredor, quantidadePessoas 
 FROM dadosMensais 
 WHERE mes = 'Setembro';
 
-SELECT mes, nomeCorredo, quantidadePessoas 
+SELECT mes, nomeCorredor, quantidadePessoas 
 FROM dadosMensais 
 WHERE quantidadePessoas < 1200;
-
-SELECT mes, SUM(quantidadePessoas) AS totalPessoasMes 
-FROM dadosMensais 
-GROUP BY mes;
-
 
 -- ===========================================================================================
 
@@ -163,17 +158,3 @@ WHERE descricao_corredor = 'Congelados';
 SELECT numero_do_corredor
 FROM corredores
 WHERE nome_do_mercado = 'Carrefour Brasil';
-
-
-
-
-
-
-
-
-
-   
-
-
-  
-  
