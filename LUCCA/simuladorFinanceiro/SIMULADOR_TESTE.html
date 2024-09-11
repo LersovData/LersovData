@@ -14,13 +14,18 @@
     <h2>Informações dos Corredores</h2>
 
     Quantas pessoas passaram pelo corredor de Higiene e Limpeza? <input type="number" id="ipt_higiene"> <br>
+    Qual é o preço médio por produto em Higiene e Limpeza? <input type="number" id="ipt_mediaProdutoHigiene"> <br>
     Quantos produtos foram vendidos no corredor de Higiene e Limpeza? <input type="number" id="ipt_qtdVendaHigiene">
     <hr>
     Quantas pessoas passaram pelo corredor Hortifruti? <input type="number" id="ipt_hortifruti"> <br>
+    Qual é o preço médio por produto em Hortifruti? <input type="number" id="ipt_mediaProdutoHortifruti"> <br>
     Quantos produtos foram vendidos no corredor Hortifruti? <input type="number" id="ipt_qtdVendaHortifruti">
+
     <hr>
     Quantas pessoas passaram pelo corredor de Massas? <input type="number" id="ipt_massas"> <br>
+    Qual é o preço médio por produto em Massas? <input type="number" id="ipt_mediaProdutoMassas"> <br>
     Quantos produtos foram vendidos no corredor de Massas? <input type="number" id="ipt_qtdVendaMassas"> <br>
+
     <br>
 
     <button onclick="calcular()">Simular</button>
@@ -38,21 +43,32 @@
         var qtdHortifruti = Number(ipt_hortifruti.value)
         var qtdMassas = Number(ipt_massas.value)
 
+        var mediaProdutoHigiene = Number(ipt_mediaProdutoHigiene.value)
+        var mediaProdutoHortifruti = Number(ipt_mediaProdutoHortifruti.value)
+        var mediaProdutoMassas = Number(ipt_mediaProdutoMassas.value)
+
         var vendaHigiene = Number(ipt_qtdVendaHigiene.value)
         var vendaHortifruti = Number(ipt_qtdVendaHortifruti.value)
         var vendaMassas = Number(ipt_qtdVendaMassas.value)
-        var mensagem = ""
+        
+        var lucroHigiene = mediaProdutoHigiene * vendaHigiene
+        var lucroHortifruti = mediaProdutoHortifruti * vendaHortifruti 
+        var lucroMassas = mediaProdutoMassas * vendaMassas
 
+        
         var taxaConversaoHigiene = vendaHigiene / qtdHigiene * 100
         var taxaConversaoHortifruti = vendaHortifruti / qtdHortifruti * 100
         var taxaConversaoMassas = vendaMassas / qtdMassas * 100
+        var mensagem = ""
 
-        mensagem = `Com o total de ${qtdTotalClientes} clientes, <br>`
+        mensagem = `Com o total de <b>${qtdTotalClientes}</b> clientes, <br>`
 
-        mensagem += `No corredor de Higiene, houve o fluxo de ${qtdHigiene} pessoas, o que equivale a ${qtdHigiene / qtdTotalClientes * 100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br> ${vendaHigiene} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoHigiene}% <br>
+        mensagem += `No corredor de Higiene, houve o fluxo de <b>${qtdHigiene}</b> pessoas, o que equivale a <b>${qtdHigiene / qtdTotalClientes * 100}%</b> do valor total de pessoas que frequentaram o mercado nesse dia. <br> O lucro total desse corredor foi de <b>R$${lucroHigiene}</b>.  <br>
+
+        <b>${vendaHigiene}</b> produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoHigiene}%</b>. <br>
         <br>`
         if (taxaConversaoHigiene >= 0 && taxaConversaoHigiene < 25) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>.<br>
+            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>. Para que essa taxa seja considerada alta, ela precisa estar entre <b>50% e 75%</b><br>
             <br>
             Aqui estão algumas medidas que você pode tomar com base nisso: <br>
             - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
@@ -83,11 +99,13 @@
             <hr>`
         }
 
-        mensagem += `No corredor de Hortifruti, houve o fluxo de ${qtdHortifruti} pessoas, o que equivale a ${qtdHortifruti / qtdTotalClientes * 100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br>
-        ${vendaHortifruti} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoHortifruti}% <br>
+        mensagem += `No corredor de Hortifruti, houve o fluxo de <b>${qtdHortifruti}</b> pessoas, o que equivale a <b>${qtdHortifruti / qtdTotalClientes * 100}%</b> do valor total de pessoas que frequentaram o mercado nesse dia. <br>
+        O lucro total desse corredor foi de <b>R$${lucroHortifruti}</b>. <br>
+        <b>${vendaHortifruti} </b>produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoHortifruti}%</b> <br>
         <br>`
+
         if (taxaConversaoHortifruti >= 0 && taxaConversaoHortifruti < 25) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>.<br>
+            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>. Para que essa taxa seja considerada alta, ela precisa estar entre 50% e 75%<br><br>
             <br>
             Aqui estão algumas medidas que você pode tomar com base nisso: <br>
             - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
@@ -118,10 +136,13 @@
             <hr>`
         }
 
-        mensagem += `No corredor de Massas, houve o fluxo de ${qtdMassas} pessoas, o que equivale a ${qtdMassas / qtdTotalClientes * 100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br> 
-        ${vendaMassas} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoMassas}% <br>`
+        mensagem += `No corredor de Massas, houve o fluxo de <b>${qtdMassas}</b> pessoas, o que equivale a <b>${qtdMassas / qtdTotalClientes * 100}%</b> do valor total de pessoas que frequentaram o mercado nesse dia. <br>
+        O lucro total desse corredor foi de <b>R$${lucroMassas}</b>. <br>
+    
+        <b>${vendaMassas}</b> produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoMassas}%</b> <br>
+        <br>`
         if (taxaConversaoMassas >= 0 && taxaConversaoMassas < 25) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>.<br>
+            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>. Para que essa taxa seja considerada alta, ela precisa estar entre 50% e 75%<br><br>
             <br>
             Aqui estão algumas medidas que você pode tomar com base nisso: <br>
             - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
