@@ -63,12 +63,11 @@
 
         mensagem = `Com o total de <b>${qtdTotalClientes}</b> clientes, <br>`
 
-        mensagem += `No corredor de Higiene, houve o fluxo de <b>${qtdHigiene}</b> pessoas, o que equivale a <b>${qtdHigiene / qtdTotalClientes * 100}%</b> do valor total de pessoas que frequentaram o mercado nesse dia. <br> O lucro total desse corredor foi de <b>R$${lucroHigiene}</b>.  <br>
+        mensagem += `No corredor de Higiene, houve o fluxo de <b>${qtdHigiene}</b> pessoas, o que equivale a <b>${qtdHigiene / qtdTotalClientes * 100}%</b> do valor total de pessoas que frequentaram o mercado nesse dia, com o lucro total de <b>R$${lucroHigiene}</b>.  <br>
 
-        <b>${vendaHigiene}</b> produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoHigiene}%</b>. <br>
-        <br>`
+        <b>${vendaHigiene}</b> produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoHigiene}%</b> `
         if (taxaConversaoHigiene >= 0 && taxaConversaoHigiene < 25) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>. Para que essa taxa seja considerada alta, ela precisa estar entre <b>50% e 75%</b><br>
+            mensagem += `(conversão <span style="color: red;">baixa</span>). Para que essa taxa seja considerada alta, ela precisa estar entre <b>50% e 75%</b><br>
             <br>
             Aqui estão algumas medidas que você pode tomar com base nisso: <br>
             - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
@@ -81,18 +80,18 @@
             <hr>`
         }
         if (taxaConversaoHigiene >= 25 && taxaConversaoHigiene < 50) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: orange;">razoável</span>. <br>
+            mensagem += `(conversão <span style="color: orange;">razoável</span>). <br>
             <br>
             <hr>`
         }
         if (taxaConversaoHigiene >= 50 && taxaConversaoHigiene < 75) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: yellowgreen;">alta</span>.<br>
+            mensagem += `(conversão <span style="color: yellowgreen;">alta</span>).<br>
             <br>
             Atente-se a velocidade de re-estoque deste produto. É um produto <span style="color: green;">muito valioso</span> para manter no supermercado.<br>
             <hr>`
         }
         if (taxaConversaoHigiene >= 75) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: green;">extremamente alta</span>. <br>
+            mensagem += `(conversão <span style="color: green;">extremamente alta</span>). <br>
             <br>
             O produto é um completo <span style="color: green;">sucesso</span>.
             A marca e o supermercado podem ter muito a ganhar com parcerias para vendas deste produto entre outros.
@@ -102,11 +101,10 @@
 
         mensagem += `No corredor de Hortifruti, houve o fluxo de <b>${qtdHortifruti}</b> pessoas, o que equivale a <b>${qtdHortifruti / qtdTotalClientes * 100}%</b> do valor total de pessoas que frequentaram o mercado nesse dia. <br>
         O lucro total desse corredor foi de <b>R$${lucroHortifruti}</b>. <br>
-        <b>${vendaHortifruti} </b>produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoHortifruti}%</b> <br>
-        <br>`
+        <b>${vendaHortifruti} </b>produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoHortifruti}%</b> `
 
         if (taxaConversaoHortifruti >= 0 && taxaConversaoHortifruti < 25) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>. Para que essa taxa seja considerada alta, ela precisa estar entre 50% e 75%<br><br>
+            mensagem += `(conversão <span style="color: red;">baixa</span>). Para que essa taxa seja considerada alta, ela precisa estar entre 50% e 75%<br><br>
             <br>
             Aqui estão algumas medidas que você pode tomar com base nisso: <br>
             - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
@@ -119,18 +117,18 @@
             <hr>`
         }
         if (taxaConversaoHortifruti >= 25 && taxaConversaoHortifruti < 50) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: orange;">razoável</span>. <br>
+            mensagem += `(conversão <span style="color: orange;">razoável</span>). <br>
             <br>
             <hr>`
         }
         if (taxaConversaoHortifruti >= 50 && taxaConversaoHortifruti < 75) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: yellowgreen;">alta</span>.<br>
+            mensagem += `(conversão <span style="color: yellowgreen;">alta</span>).<br>
             <br>
             Atente-se a velocidade de re-estoque deste produto. É um produto <span style="color: green;">muito valioso</span> para manter no supermercado.<br>
             <hr>`
         }
         if (taxaConversaoHortifruti >= 75) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: green;">extremamente alta</span>. <br>
+            mensagem += `(conversão <span style="color: green;">extremamente alta</span>). <br>
             <br>
             O produto é um completo <span style="color: green;">sucesso</span>.
             A marca e o supermercado podem ter muito a ganhar com parcerias para vendas deste produto entre outros.
@@ -141,10 +139,10 @@
         mensagem += `No corredor de Massas, houve o fluxo de <b>${qtdMassas}</b> pessoas, o que equivale a <b>${qtdMassas / qtdTotalClientes * 100}%</b> do valor total de pessoas que frequentaram o mercado nesse dia. <br>
         O lucro total desse corredor foi de <b>R$${lucroMassas}</b>. <br>
     
-        <b>${vendaMassas}</b> produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoMassas}%</b> <br>
-        <br>`
+        <b>${vendaMassas}</b> produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de <b>${taxaConversaoMassas}%</b>`
+
         if (taxaConversaoMassas >= 0 && taxaConversaoMassas < 25) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>. Para que essa taxa seja considerada alta, ela precisa estar entre 50% e 75%<br><br>
+            mensagem += `(conversão <span style="color: red;">baixa</span>). Para que essa taxa seja considerada alta, ela precisa estar entre 50% e 75%<br><br>
             <br>
             Aqui estão algumas medidas que você pode tomar com base nisso: <br>
             - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
@@ -157,18 +155,18 @@
             <hr>`
         }
         if (taxaConversaoMassas >= 25 && taxaConversaoMassas < 50) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: orange;">razoável</span>. <br>
+            mensagem += `(conversão <span style="color: orange;">razoável</span>). <br>
             <br>
             <hr>`
         }
         if (taxaConversaoMassas >= 50 && taxaConversaoMassas < 75) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: yellowgreen;">alta</span>.<br>
+            mensagem += `(conversão <span style="color: yellowgreen;">alta</span>).<br>
             <br>
             Atente-se a velocidade de re-estoque deste produto. É um produto <span style="color: green;">muito valioso</span> para manter no supermercado.<br>
             <hr>`
         }
         if (taxaConversaoMassas >= 75) {
-            mensagem += `Essa é uma taxa de conversão <span style="color: green;">extremamente alta</span>. <br>
+            mensagem += `(conversão <span style="color: green;">extremamente alta</span>). <br>
             <br>
             O produto é um completo <span style="color: green;">sucesso</span>.
             A marca e o supermercado podem ter muito a ganhar com parcerias para vendas deste produto entre outros.
