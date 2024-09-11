@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro</title>
 </head>
+
 <body>
     <h2>Total de clientes</h2>
     Quantos clientes passaram no mercado esse dia? <input type="number" id="ipt_qtdClientes">
@@ -25,13 +27,12 @@
     <hr>
 
     <div id="div_resultado"></div>
-    <div id="div_resHigiene"></div>
-    <div id="div_resHortifruti"></div>
-    <div id="div_resMassas"></div>
+
 </body>
+
 </html>
 <script>
-    function calcular(){
+    function calcular() {
         var qtdTotalClientes = Number(ipt_qtdClientes.value)
         var qtdHigiene = Number(ipt_higiene.value)
         var qtdHortifruti = Number(ipt_hortifruti.value)
@@ -40,24 +41,24 @@
         var vendaHigiene = Number(ipt_qtdVendaHigiene.value)
         var vendaHortifruti = Number(ipt_qtdVendaHortifruti.value)
         var vendaMassas = Number(ipt_qtdVendaMassas.value)
+        var mensagem = ""
 
+        var taxaConversaoHigiene = vendaHigiene / qtdHigiene * 100
+        var taxaConversaoHortifruti = vendaHortifruti / qtdHortifruti * 100
+        var taxaConversaoMassas = vendaMassas / qtdMassas * 100
 
-        var taxaConversaoHigiene = vendaHigiene/qtdHigiene*100
-        var taxaConversaoHortifruti = vendaHortifruti/qtdHortifruti*100
-        var taxaConversaoMassas = vendaMassas/qtdMassas*100
+        mensagem += `Com o total de ${qtdTotalClientes} clientes, <br>`
 
-        div_resultado.innerHTML = `Com o total de ${qtdTotalClientes} clientes, <br>`
-
-        div_resHigiene.innerHTML = `No corredor de Higiene, houve o fluxo de ${qtdHigiene} pessoas, o que equivale a ${qtdHigiene/qtdTotalClientes*100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br> ${vendaHigiene} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoHigiene}% <br>
+        mensagem += `No corredor de Higiene, houve o fluxo de ${qtdHigiene} pessoas, o que equivale a ${qtdHigiene / qtdTotalClientes * 100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br> ${vendaHigiene} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoHigiene}% <br>
         <br>`
-        div_resHortifruti.innerHTML = `No corredor de Hortifruti, houve o fluxo de ${qtdHortifruti} pessoas, o que equivale a ${qtdHortifruti/qtdTotalClientes*100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br>
+        mensagem += `No corredor de Hortifruti, houve o fluxo de ${qtdHortifruti} pessoas, o que equivale a ${qtdHortifruti / qtdTotalClientes * 100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br>
         ${vendaHortifruti} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoHortifruti}% <br>
         <br>`
-        div_resMassas.innerHTML = `No corredor de Massas, houve o fluxo de ${qtdMassas} pessoas, o que equivale a ${qtdMassas/qtdTotalClientes*100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br> 
+        mensagem += `No corredor de Massas, houve o fluxo de ${qtdMassas} pessoas, o que equivale a ${qtdMassas / qtdTotalClientes * 100}% do valor total de pessoas que frequentaram o mercado nesse dia. <br> 
         ${vendaMassas} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoMassas}% <br>`
 
         if (taxaConversaoHigiene >= 0 && taxaConversaoHigiene < 25) {
-            div_resHigiene.innerHTML += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>.<br>
+            mensagem += `Essa é uma taxa de conversão <span style="color: red;">baixa</span>.<br>
             <br>
             Aqui estão algumas medidas que você pode tomar com base nisso: <br>
             - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
@@ -68,27 +69,29 @@
             - <span style="color: red;">Cuidado!</span> Pode haver perda de produtos por data de validade. <br>
             <br>
             <hr>`
-            } 
+        }
         if (taxaConversaoHigiene >= 25 && taxaConversaoHigiene < 50) {
-            div_resHigiene.innerHTML += `Essa é uma taxa de conversão <span style="color: orange;">razoável</span>. <br>
+            mensagem += `Essa é uma taxa de conversão <span style="color: orange;">razoável</span>. <br>
             <br>
             <span style="color: red;">${taxaConversao}%</span> dos clientes buscam melhores preços e promoções. Talvez preparar campanhas de promoção seja o que falte para promover a visibilidade desse produto e <span style="color: green;">aumentar</span> a sua taxa de conversão.<br>
             <hr>`
         }
         if (taxaConversaoHigiene >= 50 && taxaConversaoHigiene < 75) {
-            div_resHigiene.innerHTML += `Essa é uma taxa de conversão <span style="color: yellowgreen;">alta</span>.<br>
+            mensagem += `Essa é uma taxa de conversão <span style="color: yellowgreen;">alta</span>.<br>
             <br>
             Atente-se a velocidade de re-estoque deste produto. É um produto <span style="color: green;">muito valioso</span> para manter no supermercado.<br>
             <hr>`
         }
         if (taxaConversaoHigiene >= 75) {
-            div_resHigiene.innerHTML += `Essa é uma taxa de conversão <span style="color: green;">extremamente alta</span>. <br>
+            mensagem += `Essa é uma taxa de conversão <span style="color: green;">extremamente alta</span>. <br>
             <br>
             O produto é um completo <span style="color: green;">sucesso</span>.
             A marca e o supermercado podem ter muito a ganhar com parcerias para vendas deste produto entre outros.
             <br>
             <hr>`
-            }
         }
+
+        div_resultado.innerHTML = mensagem
+    }
 
 </script>
