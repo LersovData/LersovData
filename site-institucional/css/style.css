@@ -1,0 +1,192 @@
+@import url('color.css');
+
+body {
+    background-color: var(--background-color);
+    
+    margin: 0;
+    padding: 0;
+
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+}
+
+/* INICIO HEADER */
+
+header {
+    position: fixed;
+    z-index: 12;
+
+    height: 80px;
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+header .container {
+    height: 85%;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fundoNav {
+    background-color: var(--background-color-home);
+
+    border-radius: 5px;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--color-home);;
+
+    font-weight: bold;
+}
+
+.navbar {
+    list-style-type: none;
+
+    display: flex;
+    justify-content: end;
+
+    gap: 20px;
+    margin: 0 10px;
+
+    width: 70%;
+}
+
+.titulo {
+    color: var(--color-home);
+    font-weight: bold;
+}
+
+/* FIM HEADER */
+
+/* INICIO HOME */
+
+.areaHome {
+    height: 90vh;
+    width: 100wh;
+
+    background-color: var(--background-color-home);
+
+    border-radius: 0 0 0 100px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.margin-sections {
+    margin: 0 64px;
+
+    height: 100%;
+}
+
+.areaTextoHome {
+    height: 70%;
+
+    display: flex;
+    align-items: end;
+}
+
+.areaBotaoHome {
+    height: 30%;
+}
+
+/* ---- TEXTOS ---- */
+
+.textoHome {
+    color: var(--color-home);
+
+    font-size: 65px;
+
+    line-height: 1.3;
+
+    margin-bottom: 50px;
+}
+
+.spanHome {
+    font-weight: bold;
+    position: relative;
+
+    padding-bottom: 8px;
+}
+
+.spanHome::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--line-gradient);
+}
+
+.spanBotaoHome {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* BOTOES */
+
+.botaoHome {
+    height: 70px;
+    width: 340px;
+
+    border-radius: 10px;
+    border: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dentroBotao {
+    width: 80%;
+    height: 85%;
+    
+    color: var(--color-home);
+    background-color: var(--items-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5px;
+}
+
+.dentroBotaoIcon {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ICONES */
+
+.icon-size {
+    font-size: 2rem;
+}
+
+.iconFundo {
+    font-size: 700px;
+    color: var(--items-color);
+}
+
+.iconFundoHome {
+    position: absolute; /* Para posicionar em relação ao contêiner pai */
+    top: 0px; /* Distância do fundo da seção */
+    right: 0px; /* Distância da direita da seção */
+    z-index: 1;
+}
+
+/* FIM HOME */
