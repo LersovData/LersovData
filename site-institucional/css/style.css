@@ -80,6 +80,8 @@ header a {
 
     position: relative;
     overflow: hidden;
+
+    box-shadow: var(--sombra);
 }
 
 .margin-sections {
@@ -146,6 +148,8 @@ header a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    cursor: pointer;
 }
 
 .dentroBotao {
@@ -160,6 +164,8 @@ header a {
     justify-content: center;
 
     border-radius: 5px;
+
+    box-shadow: var(--sombra);
 }
 
 .dentroBotaoIcon {
@@ -183,10 +189,272 @@ header a {
 }
 
 .iconFundoHome {
-    position: absolute; /* Para posicionar em relação ao contêiner pai */
-    top: 0px; /* Distância do fundo da seção */
-    right: 0px; /* Distância da direita da seção */
+    position: absolute;
+    top: 0px;
+    right: 0px;
     z-index: 1;
 }
 
 /* FIM HOME */
+
+/* INICIO SOBRE NOS */
+
+.areaSobreNos {
+    height: 90vh;
+}
+
+.areaSobreNos .margin-sections {
+    margin: 64px 64px;
+}
+
+.areaCards {
+    height: 45%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+} 
+
+.areaCards .card {
+    height: 225px;
+    width: 300px;
+    border: solid 5px #FFFFFF;
+    background-color: var(--background-color);
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    box-shadow: var(--sombra);
+}
+
+.card1 {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card2 {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fundoIcone {
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    background-color: var(--color-home);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: var(--sombra);
+}
+
+.card .icon-size {
+    height: 40px;
+    width: 40px;
+
+    color: var(--items-color);
+}
+
+.card span {
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.card .spanDestaq {
+    color: var(--items-color);
+}
+
+.areaSobre {
+    height: 55%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.areaSobre .tituloSobre{
+    font-size: 50px;
+    position: relative;
+
+    padding-bottom: 8px;
+}
+
+.tituloSobre::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--line-gradient);
+}
+
+.areaSobre span{
+    font-size: 25px;
+}
+
+/* FIM SOBRE NÓS */
+
+/* INICIO PROJETO */
+
+.areaProjeto {
+    height: fit-content;
+
+    border-radius: 100px 0  100px 0;
+
+    background-color: var(--color-home);
+    box-shadow: var(--sombra);
+
+    
+    position: relative;
+    overflow: hidden;
+
+    text-align: end;
+
+}
+
+.areaProjeto .margin-sections {
+    margin: 64px 64px;
+}
+
+.prj1 {
+    height: 75vh;
+    width: 100%;
+    border-radius: 100px 0  0 0;
+}
+
+.iconFundoProjeto {
+    position: absolute;
+    top: 3%;
+    right: 820px;
+    z-index: 1;
+    transform: scaleX(-1);
+}
+
+.iconFundoProjeto .iconFundo {
+    font-size: 600px;
+    color: var(--items-color);
+
+}
+
+.iconFundoProjeto2 {
+    position: absolute;
+    bottom: 0;
+    right: 1200px;
+    z-index: 1;
+}
+
+.iconFundoProjeto2 .iconFundo {
+    font-size: 300px;
+    color: var(--color-home);
+}
+
+.iconFundoProjeto3 {
+    position: absolute;
+    top: 650px;
+    left: 1160px;
+    z-index: 1;
+}
+
+.iconFundoProjeto3 .iconFundo {
+    font-size: 300px;
+    color: var(--color-home);
+}
+
+.prj1 h1 {
+    font-weight: bold;
+    font-size: 70px;
+    margin-bottom: 25px;
+}
+
+.prj1 h1 span {
+    color: var(--items-color);
+}
+
+.prj1 .icon-size {
+    font-size: 60px;
+    margin-right: 10px;
+}
+
+.prj1 .subtextoPrj {
+    font-size: 25px;
+    font-weight: 700;
+    color: #000000d2;
+}
+
+.btnPrj {
+    height: 70px;
+    width: 280px;
+    background-color: var(--items-color);
+    color: var(--color-home);
+    margin-top: 25px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 25px;
+    font-weight: bold;
+    box-shadow: var(--sombra);
+    cursor: pointer;
+}
+
+.prj2 {
+    height: 90vh;
+    width: 100%;
+    background-color: black;
+    border-radius: 0 0  100px 0;
+    color: var(--color-home);
+
+}
+
+.prj2 .margin-sections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    gap: 50px;
+}
+
+.prj2 h1 {
+    margin-top: 70px;
+    font-size: 36px;
+}
+
+.prj2 span {
+    font-size: 20px;
+}
+
+.cardsPrj {
+    height: 50%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardsPrj .card {
+    height: 220px;
+    width: 280px;
+}
+
+.cardsPrj .card span {
+    font-size: 17px;
+}
+
+.cardsPrj .icon-size {
+    color: var(--color-home);
+    font-size: 55px;
+}
