@@ -1,116 +1,136 @@
-@import url('color.css');
-
-body {
-    background-color: var(--background-color);
-    
+* {
     margin: 0;
     padding: 0;
-
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
 }
 
-/* INICIO HEADER */
+html {
+    scroll-behavior: smooth;
+}
 
-header {
-    position: fixed;
-    z-index: 12;
+body {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
 
-    height: 80px;
-    width: 100vw;
-
-    display: flex;
-    align-items: center;
+    background-color: #F6F8FB;
 }
 
 .container {
-    display: flex;
     width: 90%;
-    margin: auto;
+    margin: 0 auto;
+}
+
+.areaHome,
+.areaSobreNos,
+.areaProjeto,
+.areaFerramenta {
+    margin-bottom: 50px;
+}
+
+/* animação */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.fade-in.visible {
+    opacity: 1;
+}
+
+/* ----- HEADER ----- */
+header {
+    color: #FFF;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    transition: color 0.3s ease; /* Para suavizar a mudança de cor */
 }
 
 header .container {
-    height: 85%;
-
+    display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.fundoNav {
-    background-color: var(--background-color-home);
-
+    background-color: rgb(51 51 51 / 30%);
+    backdrop-filter: blur(10px);
+    padding: 10px;
     border-radius: 5px;
-}
-
-header a {
-    text-decoration: none;
-    color: var(--color-home);;
-
-    font-weight: bold;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
 }
 
 .navbar {
-    list-style-type: none;
-
     display: flex;
-    justify-content: end;
-
-    gap: 20px;
-    margin: 0 10px;
-
-    width: 70%;
+    justify-content: space-between;
 }
 
-.titulo {
-    color: var(--color-home);
+.navbar h1 {
+    color: #FFF;
+}
+
+.navbar a {
+    position: relative;
+    color: white;
     font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.3s ease;
 }
 
-/* FIM HEADER */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #2720EC;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
 
-/* INICIO HOME */
+.navbar a:hover {
+    color: #ffffff;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+header.scrolled .navbar a {
+    color: black;
+}
+
+header.scrolled .navbar a:hover::after {
+    background-color: #2720EC; 
+}
+
+
+
+/* ----- FIM HEADER ----- */
+
+/* ----- INICIO ----- */
 
 .areaHome {
+    background-color: #0B091B;
     height: 90vh;
-    width: 100wh;
-
-    background-color: var(--background-color-home);
-
-    border-radius: 0 0 0 100px;
+    color: rgb(255, 255, 255);
+    text-align: start;
 
     position: relative;
     overflow: hidden;
 
-    box-shadow: var(--sombra);
+    border-radius: 0 0 0 100px;
 }
 
-.margin-sections {
-    margin: 0 64px;
-
+.areaHome .container {
     height: 100%;
-}
-
-.areaTextoHome {
-    height: 70%;
-
     display: flex;
-    align-items: end;
+    justify-content: start;
+    align-items: center;
 }
-
-.areaBotaoHome {
-    height: 30%;
-}
-
-/* ---- TEXTOS ---- */
 
 .textoHome {
-    color: var(--color-home);
-
-    font-size: 65px;
-
-    line-height: 1.3;
-
-    margin-bottom: 50px;
+    font-size: 58px;
+    font-weight: 400;
 }
 
 .spanHome {
@@ -128,7 +148,7 @@ header a {
     width: 100%;
     height: 3px;
     border-radius: 10px;
-    background: var(--line-gradient);
+    background: blue;
 }
 
 .spanBotaoHome {
@@ -136,36 +156,38 @@ header a {
     font-weight: bold;
 }
 
-/* BOTOES */
-
 .botaoHome {
-    height: 70px;
     width: 340px;
+    height: 70px;
 
     border-radius: 10px;
-    border: 0;
+    margin-top: 40px;
+    padding: 7px 10px;
+
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    cursor: pointer;
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    cursor: pointer;
 }
 
 .dentroBotao {
     width: 80%;
-    height: 85%;
-    
-    color: var(--color-home);
-    background-color: var(--items-color);
+    height: 100%;
+
+    background-color: #2720EC;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    font-size: 25px;
+    font-weight: bold;
+
     border-radius: 5px;
 
-    box-shadow: var(--sombra);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
 }
 
 .dentroBotaoIcon {
@@ -175,17 +197,20 @@ header a {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    color: #000;
 }
 
-/* ICONES */
+.botaoHome:hover {
+    background-color: #555;
+}
 
 .icon-size {
-    font-size: 2rem;
+    font-size: 35px;
 }
 
 .iconFundo {
     font-size: 700px;
-    color: var(--items-color);
 }
 
 .iconFundoHome {
@@ -193,85 +218,85 @@ header a {
     top: 0px;
     right: 0px;
     z-index: 1;
+
+    color: #2720EC;
 }
 
-/* FIM HOME */
+.iconFundoHome .alinharIcon {
+    display: grid;
+    justify-content: start;
+    align-items: start;
+}
 
-/* INICIO SOBRE NOS */
+.iconFundoHome .icon-size {
+    font-size: 700px;
+}
 
+/* ----- FIM INICIO ----- */
+
+/* ----- SOBRE NOS ----- */
 .areaSobreNos {
     height: 90vh;
-}
-
-.areaSobreNos .margin-sections {
-    margin: 64px 64px;
+    text-align: center;
 }
 
 .areaCards {
-    height: 45%;
+    height: 40%;
 
+    margin-bottom: 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-} 
+    justify-content: space-between;
+}
 
 .areaCards .card {
     height: 225px;
     width: 300px;
-    border: solid 5px #FFFFFF;
-    background-color: var(--background-color);
 
     border-radius: 10px;
 
     display: flex;
     flex-direction: column;
-
     text-align: center;
 
-    box-shadow: var(--sombra);
+    background-color: #F6F8FB;
+    border: solid 5px #fff;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
 }
 
-.card1 {
+.cardCima {
     height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.card2 {
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fundoIcone {
+.cardCima .fundoIcone {
     height: 70px;
     width: 70px;
-    border-radius: 100%;
-    background-color: var(--color-home);
+    background-color: #FFF;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    box-shadow: var(--sombra);
+    border-radius: 100%;
+    color: #2720EC;
+
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
 }
 
-.card .icon-size {
-    height: 40px;
-    width: 40px;
+.cardBaixo {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    color: var(--items-color);
-}
-
-.card span {
     font-weight: bold;
-    font-size: 23px;
+    font-size: 20px;
 }
 
-.card .spanDestaq {
-    color: var(--items-color);
+.spanDestaq {
+    color: #2720EC;
 }
 
 .areaSobre {
@@ -281,15 +306,11 @@ header a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    text-align: center;
 }
 
-.areaSobre .tituloSobre{
+.tituloSobre {
     font-size: 50px;
     position: relative;
-
-    padding-bottom: 8px;
 }
 
 .tituloSobre::after {
@@ -300,161 +321,530 @@ header a {
     width: 100%;
     height: 3px;
     border-radius: 10px;
-    background: var(--line-gradient);
+    background: #2720EC;
 }
 
-.areaSobre span{
-    font-size: 25px;
+.areaSobre p {
+    margin-top: 20px;
+    font-size: 23px;
 }
 
-/* FIM SOBRE NÓS */
+/* ----- FIM SOBRE NOS ----- */
 
-/* INICIO PROJETO */
-
+/* ----- PROJETO ----- */
 .areaProjeto {
     height: fit-content;
 
-    border-radius: 100px 0  100px 0;
 
-    background-color: var(--color-home);
-    box-shadow: var(--sombra);
-
-    
     position: relative;
     overflow: hidden;
+}
 
+.areaProjeto .prjCima {
+    height: 90vh;
+    background-color: #fff;
     text-align: end;
-
+    border-radius: 100px 0 0 0;
 }
 
-.areaProjeto .margin-sections {
-    margin: 64px 64px;
+.prjCima h1 {
+    font-size: 60px;
 }
 
-.prj1 {
-    height: 75vh;
-    width: 100%;
-    border-radius: 100px 0  0 0;
+.prjCima .icon-size {
+    font-size: 50px;
+    margin-right: 10px;
+}
+
+.prjCima .subTexto {
+    color: #555;
+    font-weight: bold;
+}
+
+.areaProjeto .btnPrj {
+    height: 70px;
+    width: 280px;
+    margin-top: 25px;
+    color: #FFF;
+    background-color: #2720EC;
+    border-radius: 10px;
+    border: 0;
+    font-size: 25px;
+    font-weight: bold;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
+    cursor: pointer;
+}
+
+.areaProjeto .prjBaixo {
+    height: 100vh;
+    background-color: #000;
+    border-radius: 0 0 100px 0;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #FFF;
+}
+
+.prjBaixo h1 {
+    font-size: 35px;
+}
+
+.prjBaixo span {
+    font-size: 18px;
+}
+
+.prjBaixo .card {
+    height: 200px;
+    background-color: #000;
+    border: none;
+    margin-top: 20px;
+}
+
+.prjBaixo .icon-size {
+    font-size: 45px;
 }
 
 .iconFundoProjeto {
     position: absolute;
-    top: 3%;
-    right: 820px;
+    top: 0;
+    left: 0;
+
+    width: 45%;
+    height: 57%;
+
     z-index: 1;
     transform: scaleX(-1);
 }
 
-.iconFundoProjeto .iconFundo {
-    font-size: 600px;
-    color: var(--items-color);
+.iconFundoProjeto .icon-size {
+    font-size: 650px;
+    color: #2720EC;
+}
 
+.iconFundoProjeto .alinIcon {
+    display: grid;
+    justify-content: start;
+    align-content: center;
+
+    height: 100%;
+    width: 100%;
 }
 
 .iconFundoProjeto2 {
     position: absolute;
     bottom: 0;
-    right: 1200px;
+    left: 0;
+
+    width: 7%;
+    height: 50%;
+
     z-index: 1;
 }
 
-.iconFundoProjeto2 .iconFundo {
-    font-size: 300px;
-    color: var(--color-home);
+.iconFundoProjeto2 .alinIcon {
+    display: grid;
+    justify-content: end;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.iconFundoProjeto2 .icon-size {
+    font-size: 270px;
+    color: #FFF;
 }
 
 .iconFundoProjeto3 {
     position: absolute;
-    top: 650px;
-    left: 1160px;
+    bottom: 0;
+    right: 0;
+
+    width: 8%;
+    height: 50%;
+
     z-index: 1;
 }
 
-.iconFundoProjeto3 .iconFundo {
-    font-size: 300px;
-    color: var(--color-home);
+.iconFundoProjeto3 .alinIcon {
+    display: grid;
+    justify-content: start;
+    align-items: start;
+
+    height: 100%;
+    width: 100%;
 }
 
-.prj1 h1 {
-    font-weight: bold;
-    font-size: 70px;
-    margin-bottom: 25px;
+.iconFundoProjeto3 .icon-size {
+    font-size: 270px;
+    color: #FFF;
 }
 
-.prj1 h1 span {
-    color: var(--items-color);
+
+/* ----- FIM PROJETO ----- */
+
+/* ----- FERRAMENTA ----- */
+.areaFerramenta {
+    height: 50vh;
 }
 
-.prj1 .icon-size {
-    font-size: 60px;
-    margin-right: 10px;
+.fundoFerramenta {
+    width: 100%;
+    height: 80%;
+
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.158);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.prj1 .subtextoPrj {
-    font-size: 25px;
-    font-weight: 700;
-    color: #000000d2;
+.fundoFerramenta h1 {
+    font-size: 4em;
+    margin-left: 25px;
 }
 
-.btnPrj {
-    height: 70px;
-    width: 280px;
-    background-color: var(--items-color);
-    color: var(--color-home);
-    margin-top: 25px;
+.fundoCalc {
+    height: 90%;
+    width: 50%;
+
+    background-color: #F6F8FB;
+
     border-radius: 10px;
-    border: 0;
-    font-size: 25px;
+    margin-right: 25px;
+}
+
+.calc1 {
+    display: flex;
+    align-items: center;
+
+    height: 30%;
+    margin: 20px;
+    gap: 20px;
+}
+
+.calc1 .icon-size {
+    font-size: 4em;
+}
+
+.calc1 h1 {
+    font-size: 2em;
+    margin: 0px;
+}
+
+.calc2 {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    height: 45%;
+    margin: 0 20px;
+
+}
+
+.calc2 .icon-size {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: #2720EC;
+}
+
+.calcEspac {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.btnFerramenta {
+    border: solid 1px #2720EC;
+    border-radius: 10px;
+    background-color: #FFF;
+    margin-bottom: 10px;
+
+    height: 50px;
+    width: 120px;
+
+    font-size: 1em;
     font-weight: bold;
-    box-shadow: var(--sombra);
+
+    cursor: pointer;
+}
+/* ----- FIM FERRAMENTA ----- */
+
+/* FOOTER */
+footer {
+    height: 60vh;
+    background-color: #000;
+}
+
+footer .container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+footer .contato {
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    flex-direction: column;
+
+    color: #FFF;
+}
+
+.contato .inputs {
+    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contato .input {
+    height: 35px;
+    width: 210px;
+    border-radius: 10px;
+    border: solid 2px #FFF;
+    background-color: #000;
+    padding-left: 10px;
+    color: #FFF;
+}
+
+.contato .select {
+    width: 225px;
+    height: 39px;
+}
+
+.contato .inputMensagem {
+    width: 97%;
+    height: 100px;
+    padding-top: 10px;
+}
+
+.contato .btnContato {
+    height: 35px;
+    width: 225px;
+    border-radius: 100px;
+    border: solid 2px #FFF;
+    background-color: #000;
+    color: #FFF;
+    font-size: 17px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.prj2 {
-    height: 90vh;
-    width: 100%;
-    background-color: black;
-    border-radius: 0 0  100px 0;
-    color: var(--color-home);
-
-}
-
-.prj2 .margin-sections {
+footer .areaCards {
+    width: 60%;
+    height: 100%;
+    color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-
-    gap: 50px;
+    align-items: end;
 }
 
-.prj2 h1 {
-    margin-top: 70px;
-    font-size: 36px;
+footer .areaCards .card {
+    height: 80%;
+    width: 200px;
+    text-align: start;
+    border: none;
+    background-color: #000;
+    box-shadow: none;
 }
 
-.prj2 span {
-    font-size: 20px;
+footer .areaCards .card .title {
+    font-weight: bold;
+    color: #FFF;
 }
 
-.cardsPrj {
-    height: 50%;
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
+footer .areaCards .card p {
+    color: #949494;
 }
 
-.cardsPrj .card {
-    height: 220px;
-    width: 280px;
+/* CELULAR */
+@media (max-width: 768px) {
+
+    /* ----- HEADER ----- */
+    header {
+        position: relative;
+        background-color: #0B091B;
+    }
+
+    header .container {
+        display: block;
+        text-align: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ----- FIM HEADER ----- */
+
+    /* ----- INICIO ----- */
+    .areaHome {
+        padding: 20px;
+    }
+
+    .textoHome {
+        font-size: 35px;
+    }
+
+    .botaoHome {
+        width: 100%;
+    }
+
+    .iconFundoHome {
+        display: none;
+    }
+
+    /* ----- FIM INICIO ----- */
+
+    /* ----- SOBRE NOS ----- */
+    .areaSobreNos {
+        height: 200vh;
+    }
+
+    .areaCards {
+        flex-direction: column;
+        gap: 20px;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* ----- FIM SOBRE NOS ----- */
+
+    /* ----- PROJETO ----- */
+    .areaProjeto .prjCima {
+        height: 100vh;
+    }
+
+    .prjCima h1 {
+        font-size: 50px;
+    }
+
+    .prjCima .icon-size {
+        font-size: 40px;
+    }
+
+    .areaProjeto .prjBaixo {
+        height: 100vh;
+    }
+
+    .prjCima .subTexto {
+        margin-top: 10px;
+    }
+
+    .areaProjeto .prjBaixo {
+        height: 200vh;
+    }
+
+    .iconFundoProjeto,
+    .iconFundoProjeto2,
+    .iconFundoProjeto3 {
+        display: none;
+    }
+
+    .fundoFerramenta {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+    .fundoCalc {
+        width: 90%;
+        margin: 0;
+    }
+
+    .fundoFerramenta h1 {
+        font-size: 40px;
+        text-align: start;
+    }
+
+    .calc1 h1 {
+        font-size: 25px;
+        margin: 0px;
+    }
+
+    .calc2 {
+        flex-direction: column;
+    }
+
+    .btnFerramenta {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .areaFerramenta {
+        height: 90vh;
+    }
+
+    footer {
+        height: 120vh;
+        padding-top: 20px;
+    }
+
+    footer .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    footer .contato {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contato .input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
 
-.cardsPrj .card span {
-    font-size: 17px;
-}
+/* TABLET */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar a {
+        padding: 10px;
+    }
 
-.cardsPrj .icon-size {
-    color: var(--color-home);
-    font-size: 55px;
+    .iconFundoHome {
+        display: none;
+    }
+
+    .areaSobreNos {
+        height: 50vh;
+    }
+
+    .areaCards {
+        gap: 20px;
+    }
+
+    .areaProjeto .prjCima {
+        height: 50vh;
+    }
+
+    .areaProjeto .prjBaixo {
+        height: 60vh;
+    }
+
+    .prjBaixo .cardBaixo span {
+        font-size: 15px;
+    }
+
+    .iconFundoProjeto,
+    .iconFundoProjeto2,
+    .iconFundoProjeto3 {
+        display: none;
+    }
 }

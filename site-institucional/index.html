@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lersov Data</title>
-
     <link rel="stylesheet" href="css/style.css">
 
     <!-- fonte utilizada na pagina -->
@@ -21,39 +20,30 @@
 
 <body>
     <header>
-        <div class="container fundoNav">
-            <h1 class="titulo">Lersov Data</h1>
+        <div class="container">
+            <h1>Lersov Data</h1>
 
-            <ul class="navbar">
-                <li class="agora">
-                    <a href="#">Inicio</a>
-                </li>
-                <li>
-                    <a href="#">Sobre nós</a>
-                </li>
-                <li>
-                    <a href="#">Projeto</a>
-                </li>
-                <li>
-                    <a href="#">Contato</a>
-                </li>
-            </ul>
+            <nav class="navbar">
+                <a href="#home">Inicio</a>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#projeto">Projeto</a>
+                <a href="#contato">Contato</a>
+            </nav>
         </div>
     </header>
 
     <main>
-        <section class="areaHome">
-            <div class="margin-sections">
-                <div class="areaTextoHome">
-                    <span class="textoHome">Desbloqueie o <span class="spanHome">potencial</span> <br> do seu <span
-                            class="spanHome">negocio</span> com <br> <span class="spanHome">Lersov Data</span></span>
-                </div>
+        <section class="areaHome" id="home">
+            <div class="container fade-in">
+                <div class="areaTextoHome ">
+                    <h1 class="textoHome">Desbloqueie o <span class="spanHome">potencial</span> <br> do seu <span
+                            class="spanHome">negocio</span> com <br> <span class="spanHome">Lersov Data</span></h1>
 
-                <div class="areaBotaoHome">
                     <button class="botaoHome">
                         <div class="dentroBotao">
                             <span class="spanBotaoHome">Conhecer</span>
                         </div>
+
                         <div class="dentroBotaoIcon">
                             <i class="bi bi-arrow-right icon-size"></i>
                         </div>
@@ -61,81 +51,81 @@
                 </div>
 
                 <div class="iconFundoHome">
-                    <i class="bi bi-reception-4 iconFundo"></i>
+                    <i class="bi bi-reception-4 icon-size"></i>
                 </div>
             </div>
+
+
         </section>
 
-        <section class="areaSobreNos">
-            <div class="margin-sections">
-                <div class="areaCards">
+        <section class="areaSobreNos" id="sobre">
+            <div class="container">
+                <div class="areaCards fade-in">
                     <div class="card">
-                        <div class="card1">
+                        <div class="cardCima">
                             <div class="fundoIcone">
                                 <i class="bi bi-universal-access icon-size"></i>
                             </div>
                         </div>
-
-                        <div class="card2">
+                        <div class="cardBaixo">
                             <span>Nosso serviço é <br><span class="spanDestaq">ágil</span>, <span
                                     class="spanDestaq">flexivel</span> e <br><span
                                     class="spanDestaq">adaptavel</span></span>
                         </div>
                     </div>
+
                     <div class="card">
-                        <div class="card1">
+                        <div class="cardCima">
                             <div class="fundoIcone">
                                 <i class="bi bi-wifi icon-size"></i>
                             </div>
                         </div>
-
-                        <div class="card2">
+                        <div class="cardBaixo">
                             <span>Transformamos <br><span class="spanDestaq">experiência</span> com <br><span
                                     class="spanDestaq">inovação tecnológica</span></span>
                         </div>
                     </div>
+
                     <div class="card">
-                        <div class="card1">
+                        <div class="cardCima">
                             <div class="fundoIcone">
                                 <i class="bi bi-heart-fill icon-size"></i>
                             </div>
                         </div>
-
-                        <div class="card2">
+                        <div class="cardBaixo">
                             <span>Valorizamos a <br><span class="spanDestaq">abertura</span> e o <span
                                     class="spanDestaq">respeito</span></span>
                         </div>
                     </div>
                 </div>
-
-                <div class="areaSobre">
-                    <h1 class="tituloSobre">Sobre nós</h1>
-
-                    <span>Na Lersov, especializamo-nos em transformar a experiência de compra<br> em grandes centros
+                <div class="areaSobre fade-in">
+                    <h1 class="tituloSobre">Sobre Nós</h1>
+                    <p>Na Lersov, especializamo-nos em transformar a experiência de compra<br> em grandes centros
                         urbanos por meio da inovação tecnológica.<br> Desenvolvemos e implementamos soluções avançadas
                         que utilizam<br> sensores e tecnologias de monitoramento para otimizar o fluxo de<br> clientes e
-                        a estão de estoques em supermercados.</span>
+                        a estão de estoques em supermercados.</p>
                 </div>
             </div>
         </section>
 
-        <section class="areaProjeto">
-            <div class="prj1">
-                <div class="margin-sections">
-                    <h1><i class="bi bi-emoji-laughing icon-size"></i><span>Transforme</span> a
-                        <span>experiência</span><br> de compra do seu<br><span>cliente</span>!
+        <section class="areaProjeto" id="projeto">
+            <div class="prjCima">
+                <div class="container fade-in">
+                    <h1><i class="bi bi-emoji-laughing icon-size"></i><span class="spanDestaq">Transforme</span> a
+                        <span class="spanDestaq">experiência</span><br> de compra do seu<br><span
+                            class="spanDestaq">cliente</span>!
                     </h1>
 
-                    <span class="subtextoPrj">A solução da LERSOV DATA te ajuda a tomar as<br> melhores decisões para o
+                    <span class="subTexto">A solução da LERSOV DATA te ajuda a tomar as<br> melhores decisões para o
                         seu supermercado,<br> com dados precisos e informações claras.</span>
                     <br>
                     <button class="btnPrj">Acessar</button>
                 </div>
             </div>
 
-            <div class="prj2">
-                <div class="margin-sections">
-                    <div>
+            <div class="prjBaixo">
+                <div class="container">
+                    <div class="fade-in">
                         <h1>Por que escolher nosso sistema de gestão de<br> fluxo de clientes?</h1>
 
                         <span>Em um ambiente competitivo como o varejo, entender o comportamento dos clientes<br> é
@@ -144,57 +134,151 @@
                             movimento dentro do supermercado.</span>
                     </div>
 
-                    <div class="cardsPrj">
+                    <div class="areaCards fade-in">
                         <div class="card">
-                            <div class="card1">
+                            <div class="cardCima">
                                 <i class="bi bi-clock icon-size"></i>
                             </div>
 
-                            <div class="card2">
-                                <span>Identificar os corredores mais visitados e os horários de maior fluxo</span>
+                            <div class="cardBaixo">
+                                <span>Identificar os corredores mais<br> visitados e os horários de<br> maior
+                                    fluxo</span>
                             </div>
                         </div>
+
                         <div class="card">
-                            <div class="card1">
+                            <div class="cardCima">
                                 <i class="bi bi-database icon-size"></i>
                             </div>
 
-                            <div class="card2">
-                                <span>Dados precisos sobre a quantidade de pessoas que frequentam o supermercado em diferentes horários e épocas</span>
+                            <div class="cardBaixo">
+                                <span>Dados precisos sobre a<br> quantidade de pessoas que<br> frequentam o supermercado
+                                    em<br>
+                                    diferentes horários e épocas</span>
                             </div>
                         </div>
+
                         <div class="card">
-                            <div class="card1">
+                            <div class="cardCima">
                                 <i class="bi bi-check-circle icon-size"></i>
                             </div>
 
-                            <div class="card2">
-                                <span>Compreender melhor as preferências e hábitos dos clientes</span>
+                            <div class="cardBaixo">
+                                <span>Compreender melhor as preferências e hábitos dos <br>clientes</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="iconFundoProjeto3">
-                <i class="bi bi-check-circle iconFundo"></i>
+            <div class="iconFundoProjeto3 fade-in">
+                <div class="alinIcon">
+                    <i class="bi bi-check-circle icon-size"></i>
+                </div>
             </div>
 
-            <div class="iconFundoProjeto2">
-                <i class="bi bi-database iconFundo"></i>
+            <div class="iconFundoProjeto2 fade-in">
+                <div class="alinIcon">
+                    <i class="bi bi-database icon-size"></i>
+                </div>
             </div>
 
-            <div class="iconFundoProjeto">
-                <i class="bi bi-cart4 iconFundo"></i>
+            <div class="iconFundoProjeto fade-in">
+                <div class="alinIcon">
+                    <i class="bi bi-cart4 icon-size"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="areaFerramenta fade-in">
+            <div class="container">
+                <div class="fundoFerramenta">
+                    <h1>Conheça<br>nossa<br>ferramenta</h1>
+
+                    <div class="fundoCalc">
+                        <div class="calc1">
+                            <i class="bi bi-calculator icon-size"></i>
+
+                            <div>
+                                <h1>Calculadora Financeira</h1>
+                                <span>Uma maneira fácil de conhecer nossos benefícios</span>
+                            </div>
+                        </div>
+
+                        <div class="calc2">
+                            <div>
+                                <div class="calcEspac">
+                                    <i class="bi bi-check-circle-fill icon-size"></i>
+                                    <span>Calcule oportunidades</span>
+                                </div>
+
+                                <div class="calcEspac">
+                                    <i class="bi bi-check-circle-fill icon-size"></i>
+                                    <span>Tenha estimativas financeiras</span>
+                                </div>
+
+                                <div>
+                                    <i class="bi bi-check-circle-fill icon-size"></i>
+                                    <span>Veja diferentes opções</span>
+                                </div>
+                            </div>
+
+                            <button class="btnFerramenta">Saiba mais</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer id="contato">
+        <div class="container fade-in">
+            <div class="contato">
+                <h1>Fale conosco</h1>
 
+                <div class="inputs">
+                    <div>
+                        <input type="text" class="input" placeholder="Nome">
+                        <input type="email" class="input" placeholder="E-mail">    
+                    </div>
+                    <div>
+                        <input type="text" class="input" placeholder="Empresa">
+                        <select class="input select" id="">
+                            <option value="">CEO</option>
+                            <option value="">Estagiario</option>
+                            <option value="">Gerente</option>
+                        </select> 
+                    </div>                    
+                    <div>
+                        <textarea type="text" class="input inputMensagem" placeholder="Gostaria de comentar alguma coisa para nossa conversa ser objetiva?"></textarea>
+                    </div>
+                    <div>
+                        <button class="btnContato">Enviar</button>  
+                    </div>
+                </div>
+            </div>
+
+            <div class="areaCards">
+                <div class="card">
+                    <p class="title">São Paulo</p>
+                    <p>R. Haddock Lobo, 595</p>
+                    <p>Cerqueira César</p>
+                    <p>CEP 01414-001</p>
+                </div>
+                <div class="card">
+                    <p class="title">Contatos</p>
+                    <p>lersov@contato.com</p>
+                    <p>55 11 94002-8922</p>
+                </div>
+                <div class="card">
+                    <p class="title">© 2024 Lersov</p>
+                </div>
+            </div>
+        </div>
     </footer>
+
 </body>
 
 </html>
 
-<script src="js/script.js"></script>
+<script src="js/scrollEffect.js"></script>
