@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+
+    <nav id="sidebar">
+        <div id="sidebar-content">
+            <div id="user">
+                <a href="#">
+                    <span class="material-symbols-outlined icon">
+                        account_circle
+                    </span>
+                </a>
+                <p id="user-infos">
+                    <span class="item-description">
+                        Fulano
+                    </span>
+                    <span class="item-description">
+                        Lorem ipsum dolor.
+                    </span>
+                </p>
+            </div>
+
+            <ul id="side-items">
+                <li class="side-item active">
+                    <a href="./index.html">
+                        <span class="material-symbols-outlined">
+                            monitoring
+                        </span>
+                        <span class="item-description">
+                            Dashboards
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item">
+                    <a href="./formulario.html">
+                        <span class="material-symbols-outlined">
+                            article
+                        </span>
+                        <span class="item-description">
+                            Formulário
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item">
+                    <a href="./config.html">
+                        <span class="material-symbols-outlined">
+                            settings
+                        </span>
+                        <span class="item-description">
+                            Configurações
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <button id="open-btn">
+                <span class="material-symbols-outlined open-btn-icon">
+                    arrow_forward_ios
+                </span>
+            </button>
+        </div>
+
+        <div id="logout">
+            <button id="logout-btn">
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
+                <span class="item-description">
+                    Logout
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Nome da Empresa</h1>
+            <div class="kip">
+                
+                <div class="kip-dale um">
+                    <h2>Corredor com mais movimento</h2>
+                    <h2>Corredor 1 - Grãos</h2>
+                </div>
+                <div class="kip-dale dois">
+                    <h2>Corredor com menos movimento</h2>
+                    <h2>Corredor 3 - Higiene</h2>
+                    
+                </div>
+                <div class="kip-dale tres">
+                    
+                </div>
+
+            </div>
+
+            <div class="parte-grafico">
+                <div class="graficos">
+                    <canvas id="graficoDoughnut"></canvas>
+                </div>
+
+                <div class="graficos">
+                    <canvas id="graficoStepped"></canvas>
+                </div>
+            </div>
+    </main>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./js/script.js"></script>
+
+</html>

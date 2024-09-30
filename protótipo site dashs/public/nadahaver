@@ -1,0 +1,42 @@
+<div class="kyp">
+
+            </div>
+
+            <div class="div_graficos">
+                <div class="graficos graficoStepped">
+                    <div class="BotoesTempo">
+                        <button class="botaoData">Mês</button>
+                        <button class="botaoData">Semana</button>
+                        <button class="botaoData">Dia</button>
+                    </div>
+                    <canvas id="graficoStepped"></canvas>
+                    <div class="botoesCorredor">
+                        <button class="botaoCorredor">Corredor 1</button>
+                        <button class="botaoCorredor">Corredor 2</button>
+                        <button class="botaoCorredor">Corredor 3</button>
+                        <button class="botaoCorredor">Corredor 4</button>
+                        <button class="botaoCorredor">Corredor 5</button>
+                        <button class="botaoCorredor">Corredor 6</button>
+                        <button class="botaoCorredor">Corredor 7</button>
+                        <button class="botaoCorredor">Corredor 8</button>
+                        <button class="botaoCorredor">Corredor 9</button>
+                        <button class="botaoCorredor">Corredor 10</button>
+                        <button class="botaoCorredor">Corredor 11</button>
+                        <button class="botaoCorredor">Corredor 12</button>
+                    </div>
+                </div>
+
+                <div class="graficos graficoPizza">
+                    <canvas id="graficoPizza"></canvas>
+                </div>
+
+                <div class="graficos graficoPolar">
+                    <canvas id="graficoPolar"></canvas>
+                </div>
+
+                
+            </div>
+
+            <div class="graficos graficoDoughnut">
+                <canvas id="graficoDoughnut"></canvas>
+            </div>
