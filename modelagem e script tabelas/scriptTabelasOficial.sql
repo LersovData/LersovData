@@ -73,7 +73,7 @@ CREATE TABLE funcionarios(
     email varchar(45) not null,
     senha varchar(45) not null
 );
-drop table funcionarios;
+
 INSERT INTO funcionarios VALUES
 	(1, 1, 'Rafael', 'rafa@assai.atacadista', 'senhaASSAI01'),
     (2, 1, 'Pedro', 'pedro@assai.atacadista', 'senhaASSAI02'),
@@ -210,7 +210,7 @@ CREATE TABLE dadosSensor(
     constraint fkDadosSensorAlerta
 		foreign key (fkAlerta) references alertas(idAlerta)
 );
-drop table dadosSensor;
+
 INSERT INTO dadosSensor VALUES
 	(1,1, '2024-01-10 13:00:00', '1000', 1, 1),
     (2,1, '2024-01-10 14:00:00', '990', 1, 1),
