@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatmap Supermercado</title>
+    <script src="https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5/build/heatmap.min.js"></script>
+    <style>
+        #heatmapContainer {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="heatmapContainer"></div>
+
+    <script>
+        // Criar a instância do heatmap
+        var heatmapInstance = h337.create({
+            container: document.getElementById('heatmapContainer'),
+            radius: 40,
+            maxOpacity: 0.6,
+            blur: 0.9
+        });
+
+        // Dados simulando corredores
+        var data = {
+            max: 100,
+            data: [
+                
+                { x: 50, y: 100, value: 20 },  
+                { x: 50, y: 120, value: 15 },  
+                { x: 50, y: 140, value: 10 },  
+
+                
+                { x: 250, y: 100, value: 80 }, 
+                { x: 250, y: 120, value: 70 },  
+                { x: 250, y: 140, value: 90 },
+                { x: 250, y: 160, value: 85 }, 
+                { x: 250, y: 180, value: 95 }, 
+                { x: 250, y: 200, value: 70 },
+
+                
+                { x: 400, y: 100, value: 80 },  
+                { x: 400, y: 120, value: 70 }, 
+                { x: 400, y: 140, value: 90 }, 
+                { x: 400, y: 160, value: 85 },  
+                { x: 400, y: 180, value: 95 },  
+                { x: 400, y: 200, value: 70 },  
+
+              
+                { x: 550, y: 100, value: 50 }, 
+                { x: 550, y: 120, value: 40 },  
+                { x: 550, y: 140, value: 30 },
+                { x: 550, y: 160, value: 55 },  
+                { x: 550, y: 180, value: 30 },
+                { x: 550, y: 200, value: 55 } 
+            ]
+        };
+
+        heatmapInstance.setData(data);
+    </script>
+
+</body>
+
+</html>
