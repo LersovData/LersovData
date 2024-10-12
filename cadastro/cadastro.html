@@ -16,11 +16,9 @@
         <div class="left">
             <div class="cadastrarLogin">
                 <div class="conteudoRight">
-                    <!-- <p class="bemvindoP">Seja bem-vindo</p> -->
                     <p class="bemvindoP2">Seja-Bem Vindo!</p>
                     <div class="textoRight">
                         <p>Nosso compromisso é garantir a eficiência!</p>
-                      
                     </div>
                 </div>
                 <img class="imgDash" src="img/dashboard-capa.webp" alt="">
@@ -30,16 +28,22 @@
             <div class="container">
                 <div class="logo">
                     <img src="img/carrinho-de-compras (1).png" alt="">
-                    
                 </div>
                 <div class="titulo">
                     <p class="subtitulo">Coloque suas informações</p>
                 </div>
                 <div class="container-inputs">
-        
+                    <div class="inputs">
+                        <p>Nome</p>
+                        <input id="nome" placeholder="Insira seu nome" type="text">
+                    </div>
                     <div class="inputs">
                         <p>Email</p>
-                        <input id="email" placeholder="Insira seu email" type="text">
+                        <input id="email" placeholder="Insira seu email" type="email">
+                    </div>
+                    <div class="inputs">
+                        <p>CNPJ</p>
+                        <input id="cnpj" placeholder="Insira seu CNPJ" type="text">
                     </div>
                     <div class="inputs">
                         <p>Senha</p>
@@ -49,6 +53,15 @@
                         <p>Confirmar senha</p>
                         <input id="confirmar_senha" placeholder="Confirme sua senha" type="password">
                     </div>
+                    <div class="inputs">
+                        <p>Tipo de Mercado</p>
+                        <select id="tipo">
+                            <option value="atacadista">Atacadista</option>
+                            <option value="varejista">Varejista</option>
+                            <option value="misto">Misto</option>
+                            <option value="ecommerce">E-commerce</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="login">
                     <button onclick="validarInformacoes()">
@@ -57,9 +70,4 @@
                 </div>
                 <div class="semconta">
                     <p>Já tem conta ? <a href="./login.html">Login</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+                </div

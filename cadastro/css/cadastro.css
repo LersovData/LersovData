@@ -21,19 +21,54 @@
 
 body {
     background-color: #111111;
+    height: 100%;
+    width: 100%;
 }
+
 
 * {
     margin: 0px;
     padding: 0%;
     max-width: 100%;
-    color: #ffffff;
+    color: #fff;
 }
+/* Estilo básico do select */
+.inputs select {
+    background-color: #f0f0f0; /* Cor de fundo do campo */
+    color: #333333; /* Cor do texto */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    appearance: none; /* Remove o estilo padrão do navegador */
+    cursor: pointer;
+}
+
+/* Estilo para o menu de opções quando o select é clicado */
+.inputs select option {
+    background-color: #294fcd; /* Cor de fundo lilás para as opções */
+    color: #fff; /* Cor preta para o texto */
+}
+
+/* Estilo da opção selecionada no menu */
+.inputs select option:checked {
+    background-color: #0055cc; /* Cor mais escura para a opção selecionada */
+    color: #fff; /* Mantém o texto preto na opção selecionada */
+}
+
+.inputs select:focus {
+    border-color: #aec8ee;
+    background-color: #e6f7ff;
+    outline: none;
+}
+
+
+
 
 .main {
     display: flex;
-    width: 100%;
-    height: 100vh;
+    width: 110%;
+    height: 80%;
     flex-direction: row;
 }
 
@@ -135,6 +170,7 @@ body {
     display: flex;
     width: 50%;
     height: 100vh;
+    margin-top: 17px;
     background-color: #111111;
 }
 
