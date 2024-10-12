@@ -98,6 +98,8 @@ header button {
 .prateleira {
     padding: 10px 0;
     cursor: pointer;
+    background-color: #ffffff00;
+    border: none;
 }
 
 .titlePrat {
@@ -209,4 +211,30 @@ header button {
 .fundoResultado h1 {
     font-size: 40px;
     margin-bottom: 50px;
+}
+
+#div_totalPessoas,
+#div_corredores,
+#div_corredorHortifruti,
+#div_corredorMassas,
+#div_corredorLimpeza,
+#div_resultado {
+    display: none;
+}
+
+#div_corredorEspecifico .areaPrincipal {
+    height: 100vh;
+}
+
+#div_corredorHortifruti .areaPrincipal {
+    height: 100vh;
+}
+
+#div_corredorMassas .areaPrincipal {
+    height: 100vh;
+}
+
+
+#div_corredorLimpeza .areaPrincipal {
+    height: 100vh;
 }

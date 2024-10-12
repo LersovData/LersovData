@@ -1,183 +1,167 @@
-var header = ``;
-var conteudo = ``;
-
 // inputs
 var mediaPessoas = 0;
 
-var qtdPessoas = 0;
-var precoMedio = 0;
-var qtdVenda = 0;
+//hortifruti
+var qtdPessoasHorti = 0;
+var precoMedioHorti = 0;
+var qtdVendaHorti = 0;
+
+//massas
+var qtdPessoasMassas = 0;
+var precoMedioMassas = 0;
+var qtdVendaMassas = 0;
+
+//massas
+var qtdPessoasLimp = 0;
+var precoMedioLimp = 0;
+var qtdVendaLimp = 0;
 
 function insertDados() {
     mediaPessoas =  Number(input_media.value);
-    qtdPessoas = Number(input_qtdPessCorredor.value);
-    precoMedio = Number(input_precoMedioCorredor.value);
-    qtdVenda = Number(input_vendaCorredor.value);
 
-    console.log(mediaPessoas);
-    console.log(qtdPessoas);
-    console.log(precoMedio);
-    console.log(qtdVenda);
+    qtdPessoasHorti = Number(input_qtdPessCorredorHorti.value);
+    precoMedioHorti = Number(input_precoMedioHortiCorredor.value);
+    qtdVendaHorti = Number(input_vendaCorredorHorti.value);
+
+    qtdPessoasMassas = Number(input_qtdPessCorredorMassas.value);
+    precoMedioMassas = Number(input_precoMedioMassasCorredor.value);
+    qtdVendaMassas = Number(input_vendaCorredorMassas.value);
+
+    qtdPessoasLimp = Number(input_qtdPessCorredorLimp.value);
+    precoMedioLimp = Number(input_precoMedioLimpCorredor.value);
+    qtdVendaLimp = Number(input_vendaCorredorLimp.value);
 }
 
 function mediaDiaria() {
-    header = `
-        <div class="container">
-            <div id="contHeader">
-                <h1>Qual o número médio de clientes que você recebe por dia em seu supermercado?</h1>                    <div id="btn_ms">
-                    <input type="text" id="input_media" oninput="insertDados()">
-                    <button onclick="corredores()">></button>
-                </div>
-            </div>
-        </div>
+    div_inicio.style.display = "none";
+    div_totalPessoas.style.display = "block";
+    
+    div_corredores.style.display = "none";
+    div_corredorHortifruti.style.display = "none";
+    div_corredorMassas.style.display = "none";
+    div_corredorLimpeza.style.display = "none";
 
-        <input type="hidden" id="input_qtdPessCorredor" oninput="insertDados()">
-        <input type="hidden" id="input_precoMedioCorredor" oninput="insertDados()">
-        <input type="hidden" id="input_vendaCorredor" oninput="insertDados()">
-    `;
-
-    cabecalho.innerHTML = header;
+    div_resultado.style.display = "none";
 }
 
 function corredores() {
-    cabecalho.style.height = "25vh";
-    areaPrincipal.style.height = "70vh";
-
-    if (mediaPessoas == '' || mediaPessoas == 0) {
-        header = `
-            <div class="container">
-                <div id="contHeader">
-                    <h1>Clique nos setores e preencha algumas informações importantes...</h1>
-                    <div>
-                        <button class="btn2" onclick="resultado()">></button>
-                    </div>
-                </div>
-            </div>
-        `;
-    } else {
-        header =
-        `
-            <div class="container">
-                <div id="contHeader">
-                    <h1>Clique nos setores e preencha algumas informações importantes...</h1>
-                    <div>
-                        <button class="btn2" onclick="resultado()">></button>
-                    </div>
-                </div>
-            </div>
-        `;
+    if (mediaPessoas > 0) {
+        div_totalPessoas.style.display = "none";
+        div_corredores.style.display = "block";
     }
-
-    conteudo = `
-    <div class="areaPrateleira" id="areaPrateleira">
-                    <div onclick="setor()" class="prateleira">
-                        <div class="titlePrat">
-                            <p>Hortifruti</p>
-                        </div>
-
-                        <img src="https://png.pngtree.com/png-vector/20240601/ourmid/pngtree-supermarket-with-products-shelves-and-fridges-with-food-stuff-png-image_12590068.png">
-                    </div>
-                    <div onclick="setor()" class="prateleira">
-                        <div class="titlePrat">
-                            <p>Massas</p>
-                        </div>
-                        <img src="https://png.pngtree.com/png-vector/20240601/ourmid/pngtree-supermarket-with-products-shelves-and-fridges-with-food-stuff-png-image_12590068.png">
-                    </div>
-                    <div onclick="setor()" class="prateleira">
-                        <div class="titlePrat">
-                            <p>Limpeza</p>
-                        </div>
-                        <img src="https://png.pngtree.com/png-vector/20240601/ourmid/pngtree-supermarket-with-products-shelves-and-fridges-with-food-stuff-png-image_12590068.png">
-                    </div>
-                </div>
-    `;
-
-    cabecalho.innerHTML = header;
-    div_main.innerHTML = conteudo;
 }
 
 function setor() {
-    cabecalho.style.height = "0px";
-    cabecalho.innerHTML = ``;
+    if (qtdPessoasHorti == 0 && precoMedioHorti == 0 && qtdVendaHorti == 0) {
+        div_corredores.style.display = "none";
+        div_corredorHortifruti.style.display = "block";
+    }
+}
 
-    areaPrincipal.style.height = "90vh";
+function setor1() {
+    if (qtdPessoasHorti == 0 && precoMedioHorti == 0 && qtdVendaHorti == 0) {
+        div_corredores.style.display = "none";
+        div_corredorMassas.style.display = "block";
+    }
+}
 
-    conteudo = `
-    <div class="areaPrateleira" id="areaPrateleira">
-        <div onclick="corredores()" class="prateleira">
-            <div class="titlePrat">
-                <p>Hortifruti</p>
-            </div>
-
-            <img src="https://png.pngtree.com/png-vector/20240601/ourmid/pngtree-supermarket-with-products-shelves-and-fridges-with-food-stuff-png-image_12590068.png" id="img" height="450px">
-        </div>
-        <div class="formulario">
-                    <h1>Hortifruti</h1>
-
-                    <div class="areaInputs">
-                        <p>Quantas pessoas passaram pelo corredor?</p>
-                        <input type="text" id="input_qtdPessCorredor" oninput="insertDados()">
-                    </div>
-                    <div class="areaInputs">
-                        <p>Qual o preço médio dos produtos nesse corredor?</p>
-                        <input type="text" id="input_precoMedioCorredor" oninput="insertDados()">
-                    </div>
-                    <div class="areaInputs">
-                        <p>Quantos produtos foram vendidos desse corredor?</p>
-                        <input type="text" id="input_vendaCorredor" oninput="insertDados()">
-                    </div>
-
-                    <button onclick="corredores()">OK</button>
-                </div>
-        </div>
-
-        <input type="hidden" id="input_media" value="${mediaPessoas}">
-    `;
-
-    div_main.innerHTML = conteudo;
+function setor2() {
+    if (qtdPessoasHorti == 0 && precoMedioHorti == 0 && qtdVendaHorti == 0) {
+        div_corredores.style.display = "none";
+        div_corredorLimpeza.style.display = "block";
+    }
 }
 
 function resultado() {
-    cabecalho.style.height = "0px";
-    cabecalho.innerHTML = ``;
-    areaPrincipal.style.height = "90vh";
+    div_corredores.style.display = "none";
+    div_resultado.style.display = "block";
 
-    var mensagem = ``;
-    var equivalente = qtdPessoas / mediaPessoas * 100;
-    var lucro = precoMedio * qtdVenda;
-    var taxaConversao = qtdVenda / precoMedio * 100;
+    var equivalenteHorti = qtdPessoasHorti / mediaPessoas * 100;
+    var lucroHorti = precoMedioHorti * qtdVendaHorti;
+    var taxaConversaoHorti = qtdVendaHorti / qtdPessoasHorti * 100;
+    var fluxoHorti = (qtdPessoasLimp / mediaPessoas) * 100;
 
-    if (taxaConversao >= 0 && taxaConversao < 25) {
-        mensagem += `(conversão <span style="color: red;">baixa</span>). Para que essa taxa seja considerada alta, ela precisa estar entre <b>50% e 75%</b><br>
-        <br>
-        Aqui estão algumas medidas que você pode tomar com base nisso: <br>
-        - Repensar se compensa trabalhar com esse produto caso haja uma média de conversão maior por parte de outros produtos da mesma categoria. <br>
-        - Realizar promoções para queima de estoque. <br>
-        <br>
-        Cuidados a serem tomados: <br>
-        - O produto pode estar ocupando o espaço de produtos mais lucrativos. <br>
-        - <span style="color: red;">Cuidado!</span> Pode haver perda de produtos por data de validade. <br>
-        <br>
-        <hr>`
+    var equivalenteMassas = qtdPessoasMassas / mediaPessoas * 100;
+    var lucroMassas = precoMedioMassas * qtdVendaMassas;
+    var taxaConversaoMassas = qtdVendaMassas / qtdPessoasMassas * 100;
+    var fluxoMassas = (qtdPessoasLimp / mediaPessoas) * 100;
+
+    var equivalenteLimp = qtdPessoasLimp / mediaPessoas * 100;
+    var lucroLimp = precoMedioLimp * qtdVendaLimp;
+    var taxaConversaoLimp = qtdVendaLimp / qtdPessoasLimp * 100;
+    var fluxoLimp = (qtdPessoasLimp / mediaPessoas) * 100;
+    
+    var mensagemHorti = ``;
+    var mensagemMassas = ``;
+    var mensagemLimp = ``;
+
+    var convBaixa = `(conversão <span style="color: red;">baixa</span>). Para que essa taxa seja considerada alta, ela precisa estar entre <b>50% e 75%</b>`;
+    var convRazo = `(conversão <span style="color: orange;">razoável</span>).`;
+    var convAlta = `(conversão <span style="color: yellowgreen;">alta</span>).`;
+    var convExtAlta = `(conversão <span style="color: green;">extremamente alta</span>).`;
+
+    if ((taxaConversaoHorti >= 0 && taxaConversaoHorti < 25) || (taxaConversaoMassas >= 0 && taxaConversaoMassas < 25) || (taxaConversaoLimp >= 0 && taxaConversaoLimp < 25) ) {
+        mensagemHorti += convBaixa;
+
+    } else if ((taxaConversaoHorti >= 25 && taxaConversaoHorti < 50) || (taxaConversaoMassas >= 25 && taxaConversaoMassas < 50) || (taxaConversaoLimp >= 25 && taxaConversaoLimp < 50)) {
+        mensagemHorti += convRazo;
+
+    } else if ((taxaConversaoHorti >= 50 && taxaConversaoHorti < 75) || (taxaConversaoMassas >= 50 && taxaConversaoMassas < 75) || (taxaConversaoLimp >= 50 && taxaConversaoLimp < 75)) {
+        mensagemHorti += convAlta;
+
+    } else if (taxaConversaoHorti >= 75 || taxaConversaoMassas >= 75 || taxaConversaoLimp >= 75) {
+        mensagemHorti += convExtAlta;
+
     }
-    if (taxaConversao >= 25 && taxaConversao < 50) {
-        mensagem += `(conversão <span style="color: orange;">razoável</span>). <br>
-        <br>
-        <hr>`
+
+    if (taxaConversaoMassas >= 0 && taxaConversaoMassas < 25) {
+        mensagemMassas += convBaixa;
+
+    } else if (taxaConversaoMassas >= 25 && taxaConversaoMassas < 50) {
+        mensagemMassas += convRazo;
+
+    } else if (taxaConversaoMassas >= 50 && taxaConversaoMassas < 75) {
+        mensagemMassas += convAlta;
+
+    } else if (taxaConversaoMassas >= 75) {
+        mensagemMassas += convExtAlta;
+        
     }
-    if (taxaConversao >= 50 && taxaConversao < 75) {
-        mensagem += `(conversão <span style="color: yellowgreen;">alta</span>).<br>
-        <br>
-        Atente-se a velocidade de re-estoque deste produto. É um produto <span style="color: green;">muito valioso</span> para manter no supermercado.<br>
-        <hr>`
+
+    if (taxaConversaoLimp >= 0 && taxaConversaoLimp < 25) {
+        mensagemLimp += convBaixa;
+
+    } else if (taxaConversaoLimp >= 25 && taxaConversaoLimp < 50) {
+        mensagemLimp += convRazo;
+
+    } else if (taxaConversaoLimp >= 50 && taxaConversaoLimp < 75) {
+        mensagemLimp += convAlta;
+
+    } else if (taxaConversaoLimp >= 75) {
+        mensagemLimp += convExtAlta;
+
     }
-    if (taxaConversao >= 75) {
-        mensagem += `(conversão <span style="color: green;">extremamente alta</span>). <br>
-        <br>
-        O produto é um completo <span style="color: green;">sucesso</span>.
-        A marca e o supermercado podem ter muito a ganhar com parcerias para vendas deste produto entre outros.
-        <br>
-        <hr>`
+
+    if (taxaConversaoMassas > taxaConversaoHorti && qtdPessoasMassas < qtdPessoasHorti) {
+        mensagemMassas += `<br>(fluxo hortifruti: ${fluxoHorti}%) - mudar seus produtos de massas para o corredor de hortifruti deve potencializar suas vendas!`;
+    } else if (taxaConversaoMassas > taxaConversaoLimp && qtdPessoasMassas < qtdPessoasLimp) {
+        mensagemMassas += `<br>(fluxo limpeza: ${fluxoLimp}%) - mudar seus produtos de massas para o corredor de limpeza deve potencializar suas vendas!`;
+    } else if ((taxaConversaoMassas > taxaConversaoLimp || taxaConversaoHorti) && (qtdPessoasMassas > qtdPessoasHorti || qtdPessoasLimp)) {
+        mensagemMassas += `<br>(fluxo massas: ${fluxoMassas}%) - Seu corredor está muito bem`;
+    }
+    
+    if (taxaConversaoHorti > taxaConversaoLimp && qtdPessoasHorti < qtdPessoasLimp) {
+        mensagemHorti += `<br>(fluxo limpeza: ${fluxoLimp}%) - mudar seus produtos de hortifruti para o corredor de limpeza deve potencializar suas vendas!`;
+    } else if (taxaConversaoHorti > taxaConversaoMassas && qtdPessoasHorti < qtdPessoasMassas) {
+        mensagemHorti += `<br>(fluxo massas:${fluxoMassas}%) - mudar seus produtos de hortifruti para o corredor de hortifruti deve potencializar suas vendas!`;
+    } else if ((taxaConversaoHorti > taxaConversaoLimp || taxaConversaoMassas) && (qtdPessoasMassas > qtdPessoasHorti || qtdPessoasLimp)) {
+        mensagemHorti += `<br>(fluxo hortifruti: ${fluxoHorti}%) - Seu corredor está muito bem`;
+    }
+
+    if (taxaConversaoLimp > taxaConversaoHorti && qtdPessoasLimp < qtdPessoasHorti) {
+        mensagemLimp += `<br>(fluxo hortifruti: ${fluxoHorti}%) - mudar seus produtos de limpeza para o corredor de hortifruti deve potencializar suas vendas!`;
+    } else if (taxaConversaoLimp > taxaConversaoMassas && qtdPessoasLimp < qtdPessoasMassas) {
+        mensagemLimp += `<br>(fluxo massas: ${fluxoMassas}%) - mudar seus produtos de limpeza para o corredor de massas deve potencializar suas vendas!`;
     }
 
     conteudo = `
@@ -186,38 +170,45 @@ function resultado() {
 
         <p>Com o média diaria de <b>${mediaPessoas}</b> clientes no supermercado</p>
 
-        <p>No corredor de hortifruti, com o fluxo de <b>${qtdPessoas}</b></p>
-        <p>O equivalente a ${equivalente}% do valor total do dia</p>
+        <p>No corredor de hortifruti, com o fluxo de <b>${qtdPessoasHorti}</b></p>
+        <p>O equivalente a ${equivalenteHorti}% do valor total do dia</p>
 
-        <p>Gerando o lucro de R$${lucro}</p>
+        <p>Gerando o lucro de R$${lucroHorti}</p>
 
-        <p>${qtdVenda} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversao}%</p>
+        <p>${qtdVendaHorti} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoHorti}%</p>
+        
+        <br>
 
-        <p>${mensagem}</p>
+        <p>
+            Horti:${mensagemHorti}<br>
+            Massas:${mensagemMassas}<br>
+            Limpeza:${mensagemLimp}<br>
+        </p>
     
         <div>
             <button onclick="novamente()" class="btn2">Nova consulta</button>
-            <button href="index.html" class="btn2">Retornar ao site</button>
+            <a href="index.html"><button class="btn2">Retornar ao site</button></a>
         </div>
     </div>
     `;
 
-    div_main.innerHTML = conteudo;
+    div_mainResultado.innerHTML = conteudo;
 }
 
 function novamente() {
-    cabecalho.style.height = "25vh";
-    areaPrincipal.style.height = "70vh";
+    div_resultado.style.display = "none";
+    div_inicio.style.display = "block";
 
-    header =`<div class="container">
-                <div>
-                    <h1>Calculadora financeira</h1>
-                    <button class="btn2" onclick="mediaDiaria()">></button>
-                </div>
-            </div>`;
+    input_media.value = ``;
+    input_qtdPessCorredorHorti.value = ``;
+    input_precoMedioHortiCorredor.value = ``;
+    input_vendaCorredorHorti.value = ``;
 
-    conteudo = ``;
+    input_qtdPessCorredorMassas.value = ``;
+    input_precoMedioMassasCorredor.value = ``;
+    input_vendaCorredorMassas.value = ``;
 
-    div_main.innerHTML = conteudo;
-    cabecalho.innerHTML = header;
+    input_qtdPessCorredorLimp.value = ``;
+    input_precoMedioLimpCorredor.value = ``;
+    input_vendaCorredorLimp.value = ``;
 }
