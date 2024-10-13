@@ -170,55 +170,16 @@ header button {
     font-weight: bold;
 }
 
-.fundoResultado {
-    width: 95%;
-    height: 95%;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    border-bottom: 5px solid #000;
-    border-right: 5px solid #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.fundoResultado p {
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.fundoResultado button {
-    height: 40px;
-    width: 200px;
-    border: none;
-    border-radius: 10px;
-    background-color: blue;
-    color: white;
-    font-size: 20px;
-    margin-top: 50px;
-}
-
-.fundoResultado div{
-    display: flex;
-    gap: 20px;
-}
-
-.fundoResultado h1 {
-    font-size: 40px;
-    margin-bottom: 50px;
-}
-
 #div_totalPessoas,
 #div_corredores,
 #div_corredorHortifruti,
 #div_corredorMassas,
 #div_corredorLimpeza,
-#div_resultado {
+#div_resultado,
+#div_sugestao,
+#div_sugestaoMassas,
+#div_sugestaoHorti,
+#div_sugestaoLimp {
     display: none;
 }
 
@@ -237,4 +198,87 @@ header button {
 
 #div_corredorLimpeza .areaPrincipal {
     height: 100vh;
+}
+
+#div_resultado .areaPrincipal {
+    height: 100vh;
+}
+
+#div_resultado .areaPrincipal .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fundoResultado {
+    width: 100%;
+    height: 90%;
+    margin: auto;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    border-bottom: 5px solid #000;
+    border-right: 5px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fundoResultado .topoResultado {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fundoResultado .cardsResultado {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartao {
+    background-color: #ffd10c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 30%;
+    border-bottom: 5px solid #000;
+    border-right: 5px solid #000;
+}
+
+.conteudoCartao {
+    height: 95%;
+    width: 100%;
+    border: solid 3px #e7110d;
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.fundoResultado .baixoResultado {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.fundoResultado button {
+    height: 35px;
+    width: 180px;
+    border: none;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
 }

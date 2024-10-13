@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lersov - Calculadora Financeira</title>
-    
+
     <link rel="stylesheet" href="css/calculadora.css">
 
     <!-- fonte utilizada na pagina -->
@@ -46,7 +46,7 @@
                         <h1>Qual o número médio de clientes que você recebe por dia em seu supermercado?</h1>
                         <div id="btn_ms">
                             <input type="text" id="input_media" oninput="insertDados()">
-                            <button onclick="corredores()">></button>
+                            <button onclick="corredores()" id="botaoMedia">></button>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     <div id="contHeader">
                         <h1>Clique nos setores e preencha algumas informações importantes...</h1>
                         <div>
-                            <button class="btn2" onclick="resultado()">></button>
+                            <button class="btn2" onclick="resultado()" id="botaoResultado">></button>
                         </div>
                     </div>
                 </div>
@@ -225,9 +225,118 @@
     <div id="div_resultado">
         <section class="areaPrincipal" id="areaPrincipal">
 
-            <div class="container" id="div_mainResultado">
+            <div class="container">
+                <div id="div_relatorio" class="fundoResultado">
+                    <div class="topoResultado">
+                        <button onclick="novamente()" class="btn2">Nova consulta</button>
+            
+                        <h1>RELATORIO</h1>
 
-            </div>
+                        <a href="index.html"><button class="btn2">Retornar ao site</button></a>
+                    </div>
+
+                    <div class="cardsResultado">
+                        <div class="cartao">
+                            <div class="conteudoCartao">
+                                <h1>HORTIFRUTI</h1>
+
+                                <div>
+                                    <h3>FLUXO</h3>
+                                    <h2 id="textFluxoHorti"></h2>
+                                </div>
+
+                                <div id="div_lucroHorti">
+                                    <h3>LUCRO</h3>
+                                    <h2 id="textLucroHorti"></h2>
+                                </div>
+
+                                <div id="div_prodHorti">
+                                    <h3>PRODUTOS VENDIDOS</h3>
+                                    <h2 id="textProdHorti"></h2>
+                                </div>
+
+                                <div>
+                                    <h3>TAXA DE CONVERSÃO</h3>
+                                    <h2 id="textConvHorti"></h2>
+                                    <h2 id="textTpConvHorti"></h2>
+                                </div>
+
+                                <div id="div_sugestaoHorti">
+                                    <h3 id="textSugHorti"></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cartao">
+                            <div class="conteudoCartao">
+                                <h1>MASSAS</h1>
+
+                                <div>
+                                    <h3>FLUXO</h3>
+                                    <h2 id="textFluxoMassas"></h2>
+                                </div>
+
+                                <div id="div_lucroMassas">
+                                    <h3>LUCRO</h3>
+                                    <h2 id="textLucroMassas"></h2>
+                                </div>
+
+                                <div id="div_prodMassas">
+                                    <h3>PRODUTOS VENDIDOS</h3>
+                                    <h2 id="textProdMassas"></h2>
+                                </div>
+
+                                <div>
+                                    <h3>TAXA DE CONVERSÃO</h3>
+                                    <h2 id="textConvMassas"></h2>
+                                    <h2 id="textTpConvMassas"></h2>
+                                </div>
+
+                                <div id="div_sugestaoMassas">
+                                    <h3 id="textSugMassas"></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cartao">
+                            <div class="conteudoCartao">
+                                <h1>LIMPEZA</h1>
+
+                                <div>
+                                    <h3>FLUXO</h3>
+                                    <h2 id="textFluxoLimp"></h2>
+                                </div>
+
+                                <div id="div_lucroLimp">
+                                    <h3>LUCRO</h3>
+                                    <h2 id="textLucroLimp"></h2>
+                                </div>
+
+                                <div id="div_prodLimp">
+                                    <h3>PRODUTOS VENDIDOS</h3>
+                                    <h2 id="textProdLimp"></h2>
+                                </div>
+
+                                <div>
+                                    <h3>TAXA DE CONVERSÃO</h3>
+                                    <h2 id="textConvLimp"></h2>
+                                    <h2 id="textTpConvLimp"></h2>
+                                </div>
+
+                                <div id="div_sugestaoLimp">
+                                    <h3 id="textSugLimp"></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="baixoResultado">
+                        <button onclick="relatorio()" class="btn2">Relatorio</button>
+                        <button onclick="sugestao()" class="btn2">Sugestões</button>
+                    </div>
+                </div>
+
+              
 
         </section>
     </div>

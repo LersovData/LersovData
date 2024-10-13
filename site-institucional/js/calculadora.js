@@ -17,7 +17,12 @@ var precoMedioLimp = 0;
 var qtdVendaLimp = 0;
 
 function insertDados() {
-    mediaPessoas =  Number(input_media.value);
+    mediaPessoas = Number(input_media.value);
+    if (mediaPessoas <= 0) {
+        botaoMedia.style.background = "grey";
+    } else {
+        botaoMedia.style.background = "blue";
+    }
 
     qtdPessoasHorti = Number(input_qtdPessCorredorHorti.value);
     precoMedioHorti = Number(input_precoMedioHortiCorredor.value);
@@ -30,18 +35,26 @@ function insertDados() {
     qtdPessoasLimp = Number(input_qtdPessCorredorLimp.value);
     precoMedioLimp = Number(input_precoMedioLimpCorredor.value);
     qtdVendaLimp = Number(input_vendaCorredorLimp.value);
+
+    if (qtdPessoasHorti > 0 && qtdPessoasLimp > 0 && qtdPessoasMassas > 0) {
+        botaoResultado.style.background = "blue";
+    } else {
+        botaoResultado.style.background = "grey";
+    }
 }
 
 function mediaDiaria() {
     div_inicio.style.display = "none";
     div_totalPessoas.style.display = "block";
-    
+
     div_corredores.style.display = "none";
     div_corredorHortifruti.style.display = "none";
     div_corredorMassas.style.display = "none";
     div_corredorLimpeza.style.display = "none";
 
     div_resultado.style.display = "none";
+
+    botaoMedia.style.background = "grey";
 }
 
 function corredores() {
@@ -49,150 +62,201 @@ function corredores() {
         div_totalPessoas.style.display = "none";
         div_corredores.style.display = "block";
     }
+
+    div_corredorHortifruti.style.display = "none";
+    div_corredorMassas.style.display = "none";
+    div_corredorLimpeza.style.display = "none";
 }
 
 function setor() {
-    if (qtdPessoasHorti == 0 && precoMedioHorti == 0 && qtdVendaHorti == 0) {
-        div_corredores.style.display = "none";
-        div_corredorHortifruti.style.display = "block";
-    }
+    div_corredores.style.display = "none";
+    div_corredorHortifruti.style.display = "block";
 }
 
 function setor1() {
-    if (qtdPessoasHorti == 0 && precoMedioHorti == 0 && qtdVendaHorti == 0) {
-        div_corredores.style.display = "none";
-        div_corredorMassas.style.display = "block";
-    }
+    div_corredores.style.display = "none";
+    div_corredorMassas.style.display = "block";
 }
 
 function setor2() {
-    if (qtdPessoasHorti == 0 && precoMedioHorti == 0 && qtdVendaHorti == 0) {
-        div_corredores.style.display = "none";
-        div_corredorLimpeza.style.display = "block";
-    }
+    div_corredores.style.display = "none";
+    div_corredorLimpeza.style.display = "block";
 }
 
 function resultado() {
-    div_corredores.style.display = "none";
-    div_resultado.style.display = "block";
+    if (qtdPessoasHorti > 0 && qtdPessoasLimp > 0 && qtdPessoasMassas > 0) {
+        div_corredores.style.display = "none";
+        div_resultado.style.display = "block";
+    }
 
-    var equivalenteHorti = qtdPessoasHorti / mediaPessoas * 100;
     var lucroHorti = precoMedioHorti * qtdVendaHorti;
-    var taxaConversaoHorti = qtdVendaHorti / qtdPessoasHorti * 100;
-    var fluxoHorti = (qtdPessoasLimp / mediaPessoas) * 100;
+    var taxaConversaoHorti = (qtdVendaHorti / qtdPessoasHorti) * 100;
+    var fluxoHorti = (qtdPessoasHorti / mediaPessoas) * 100;
 
-    var equivalenteMassas = qtdPessoasMassas / mediaPessoas * 100;
     var lucroMassas = precoMedioMassas * qtdVendaMassas;
-    var taxaConversaoMassas = qtdVendaMassas / qtdPessoasMassas * 100;
-    var fluxoMassas = (qtdPessoasLimp / mediaPessoas) * 100;
+    var taxaConversaoMassas = (qtdVendaMassas / qtdPessoasMassas) * 100;
+    var fluxoMassas = (qtdPessoasMassas / mediaPessoas) * 100;
 
-    var equivalenteLimp = qtdPessoasLimp / mediaPessoas * 100;
     var lucroLimp = precoMedioLimp * qtdVendaLimp;
-    var taxaConversaoLimp = qtdVendaLimp / qtdPessoasLimp * 100;
+    var taxaConversaoLimp = (qtdVendaLimp / qtdPessoasLimp) * 100;
     var fluxoLimp = (qtdPessoasLimp / mediaPessoas) * 100;
-    
-    var mensagemHorti = ``;
-    var mensagemMassas = ``;
-    var mensagemLimp = ``;
 
-    var convBaixa = `(conversão <span style="color: red;">baixa</span>). Para que essa taxa seja considerada alta, ela precisa estar entre <b>50% e 75%</b>`;
-    var convRazo = `(conversão <span style="color: orange;">razoável</span>).`;
-    var convAlta = `(conversão <span style="color: yellowgreen;">alta</span>).`;
-    var convExtAlta = `(conversão <span style="color: green;">extremamente alta</span>).`;
+    var sugestaoHorti = ``;
+    var sugestaoMassas = ``;
+    var sugestaoLimp = ``;
 
-    if ((taxaConversaoHorti >= 0 && taxaConversaoHorti < 25) || (taxaConversaoMassas >= 0 && taxaConversaoMassas < 25) || (taxaConversaoLimp >= 0 && taxaConversaoLimp < 25) ) {
-        mensagemHorti += convBaixa;
+    var tpConvHorti = ``;
+    var tpConvMassas = ``;
+    var tpConvLimp = ``;
 
-    } else if ((taxaConversaoHorti >= 25 && taxaConversaoHorti < 50) || (taxaConversaoMassas >= 25 && taxaConversaoMassas < 50) || (taxaConversaoLimp >= 25 && taxaConversaoLimp < 50)) {
-        mensagemHorti += convRazo;
+    var convBaixa = `(<span style="color: red;">baixa</span>)`;
+    var convRazo = `(<span style="color: orange;">razoável</span>)`;
+    var convAlta = `(<span style="color: yellowgreen;">alta</span>)`;
+    var convExtAlta = `(<span style="color: green;">extremamente alta</span>)`;
 
-    } else if ((taxaConversaoHorti >= 50 && taxaConversaoHorti < 75) || (taxaConversaoMassas >= 50 && taxaConversaoMassas < 75) || (taxaConversaoLimp >= 50 && taxaConversaoLimp < 75)) {
-        mensagemHorti += convAlta;
-
-    } else if (taxaConversaoHorti >= 75 || taxaConversaoMassas >= 75 || taxaConversaoLimp >= 75) {
-        mensagemHorti += convExtAlta;
-
+    // definição da taxa de conversão para Hortifruti
+    if (taxaConversaoHorti < 25) {
+        tpConvHorti = convBaixa;
+    } else if (taxaConversaoHorti < 50) {
+        tpConvHorti = convRazo;
+    } else if (taxaConversaoHorti < 75) {
+        tpConvHorti = convAlta;
+    } else {
+        tpConvHorti = convExtAlta;
     }
 
-    if (taxaConversaoMassas >= 0 && taxaConversaoMassas < 25) {
-        mensagemMassas += convBaixa;
-
-    } else if (taxaConversaoMassas >= 25 && taxaConversaoMassas < 50) {
-        mensagemMassas += convRazo;
-
-    } else if (taxaConversaoMassas >= 50 && taxaConversaoMassas < 75) {
-        mensagemMassas += convAlta;
-
-    } else if (taxaConversaoMassas >= 75) {
-        mensagemMassas += convExtAlta;
-        
+    // definição da taxa de conversão para Massas
+    if (taxaConversaoMassas < 25) {
+        tpConvMassas = convBaixa;
+    } else if (taxaConversaoMassas < 50) {
+        tpConvMassas = convRazo;
+    } else if (taxaConversaoMassas < 75) {
+        tpConvMassas = convAlta;
+    } else {
+        tpConvMassas = convExtAlta;
     }
 
-    if (taxaConversaoLimp >= 0 && taxaConversaoLimp < 25) {
-        mensagemLimp += convBaixa;
-
-    } else if (taxaConversaoLimp >= 25 && taxaConversaoLimp < 50) {
-        mensagemLimp += convRazo;
-
-    } else if (taxaConversaoLimp >= 50 && taxaConversaoLimp < 75) {
-        mensagemLimp += convAlta;
-
-    } else if (taxaConversaoLimp >= 75) {
-        mensagemLimp += convExtAlta;
-
+    // definição da taxa de conversão para Limpeza
+    if (taxaConversaoLimp < 25) {
+        tpConvLimp = convBaixa;
+    } else if (taxaConversaoLimp < 50) {
+        tpConvLimp = convRazo;
+    } else if (taxaConversaoLimp < 75) {
+        tpConvLimp = convAlta;
+    } else {
+        tpConvLimp = convExtAlta;
     }
 
-    if (taxaConversaoMassas > taxaConversaoHorti && qtdPessoasMassas < qtdPessoasHorti) {
-        mensagemMassas += `<br>(fluxo hortifruti: ${fluxoHorti}%) - mudar seus produtos de massas para o corredor de hortifruti deve potencializar suas vendas!`;
-    } else if (taxaConversaoMassas > taxaConversaoLimp && qtdPessoasMassas < qtdPessoasLimp) {
-        mensagemMassas += `<br>(fluxo limpeza: ${fluxoLimp}%) - mudar seus produtos de massas para o corredor de limpeza deve potencializar suas vendas!`;
-    } else if ((taxaConversaoMassas > taxaConversaoLimp || taxaConversaoHorti) && (qtdPessoasMassas > qtdPessoasHorti || qtdPessoasLimp)) {
-        mensagemMassas += `<br>(fluxo massas: ${fluxoMassas}%) - Seu corredor está muito bem`;
+    if (fluxoHorti > 50 && fluxoMassas > 50 && fluxoLimp > 50) {
+        // sugestão especificas para cada setor
+        if (taxaConversaoHorti < 40) {
+            sugestaoHorti = `O fluxo de pessoas está acima da média no corredor de hortifruti, mas a conversão está baixa. Trabalhe para melhorar a taxa de conversão com promoções ou melhores displays de produtos.`;
+        } else {
+            sugestaoHorti = `O fluxo de pessoas está bom no corredor de hortifruti. Continue assim!`;
+        }
+
+        if (taxaConversaoMassas < 40) {
+            sugestaoMassas = `O fluxo de pessoas está acima da média no corredor de massas, mas a conversão está baixa. Trabalhe para melhorar a taxa de conversão com promoções ou melhores displays de produtos.`;
+        } else {
+            sugestaoMassas = `O fluxo de pessoas está bom no corredor de massas. Continue assim!`;
+        }
+
+        if (taxaConversaoLimp < 40) {
+            sugestaoLimp = `O fluxo de pessoas está acima da média no corredor de limpeza, mas a conversão está baixa. Trabalhe para melhorar a taxa de conversão com promoções ou melhores displays de produtos.`;
+        } else {
+            sugestaoLimp = `O fluxo de pessoas está bom no corredor de limpeza. Continue assim!`;
+        }
+    } else {
+        // sugestões para o corredor de massas
+        if (taxaConversaoMassas > taxaConversaoLimp && taxaConversaoMassas > taxaConversaoHorti && (qtdPessoasMassas > qtdPessoasHorti || qtdPessoasMassas > qtdPessoasLimp)) {
+            sugestaoMassas = `Seu corredor de massas está muito bem!`;
+        } else if (taxaConversaoMassas < 50 && fluxoMassas > mediaPessoas) {
+            sugestaoMassas = `O fluxo de pessoas no corredor de massas está acima da média, mas a conversão está baixa. Tente melhorar a disposição dos produtos ou realizar promoções.`;
+        } else if (taxaConversaoMassas < 50 && qtdPessoasMassas < qtdPessoasHorti) {
+            sugestaoMassas = `Mover seus produtos de massas para o corredor de hortifruti pode potencializar suas vendas!`;
+        } else if (taxaConversaoMassas < 50 && qtdPessoasMassas < qtdPessoasLimp) {
+            sugestaoMassas = `Mudar seus produtos de massas para o corredor de limpeza deve potencializar suas vendas!`;
+        } else {
+            sugestaoMassas = `Seu corredor de massas precisa de mais fluxo e conversão. Avalie campanhas promocionais.`;
+        }
+
+        // sugestões para o corredor de hortifruti
+        if (taxaConversaoHorti > taxaConversaoLimp && taxaConversaoHorti > taxaConversaoMassas && (qtdPessoasHorti > qtdPessoasLimp || qtdPessoasHorti > qtdPessoasMassas)) {
+            sugestaoHorti = `Seu corredor de hortifruti está muito bem!`;
+        } else if (fluxoHorti > mediaPessoas && taxaConversaoHorti < 50) {
+            sugestaoHorti = `O fluxo de pessoas no corredor de hortifruti está acima da média, mas a conversão está baixa. Tente melhorar a exposição dos produtos.`;
+        } else if (taxaConversaoHorti < 50 && qtdPessoasHorti < qtdPessoasMassas) {
+            sugestaoHorti = `Mover seus produtos de hortifruti para o corredor de massas pode potencializar suas vendas!`;
+        } else if (taxaConversaoHorti < 50 && qtdPessoasHorti < qtdPessoasLimp) {
+            sugestaoHorti = `Mover seus produtos de hortifruti para o corredor de limpeza pode potencializar suas vendas!`;
+        } else {
+            sugestaoHorti = `Seu corredor de hortifruti precisa de mais fluxo e conversão. Avalie campanhas de marketing.`;
+        }
+
+        // sugestões para o corredor de limpeza
+        if (taxaConversaoLimp > taxaConversaoHorti && taxaConversaoLimp > taxaConversaoMassas && (qtdPessoasLimp > qtdPessoasHorti || qtdPessoasLimp > qtdPessoasMassas)) {
+            sugestaoLimp = `Seu corredor de limpeza está muito bem!`;
+        } else if (fluxoLimp > mediaPessoas && taxaConversaoLimp < 50) {
+            sugestaoLimp = `O fluxo de pessoas no corredor de limpeza está acima da média, mas a conversão está baixa. Tente melhorar a disposição dos produtos.`;
+        } else if (taxaConversaoLimp < 50 && qtdPessoasLimp < qtdPessoasMassas) {
+            sugestaoLimp = `Mover seus produtos de limpeza para o corredor de massas pode potencializar suas vendas!`;
+        } else if (taxaConversaoLimp < 50 && qtdPessoasLimp < qtdPessoasHorti) {
+            sugestaoLimp = `Mover seus produtos de limpeza para o corredor de hortifruti pode potencializar suas vendas!`;
+        } else {
+            sugestaoLimp = `Seu corredor de limpeza precisa de mais fluxo e conversão. Avalie estratégias de marketing.`;
+        }
     }
-    
-    if (taxaConversaoHorti > taxaConversaoLimp && qtdPessoasHorti < qtdPessoasLimp) {
-        mensagemHorti += `<br>(fluxo limpeza: ${fluxoLimp}%) - mudar seus produtos de hortifruti para o corredor de limpeza deve potencializar suas vendas!`;
-    } else if (taxaConversaoHorti > taxaConversaoMassas && qtdPessoasHorti < qtdPessoasMassas) {
-        mensagemHorti += `<br>(fluxo massas:${fluxoMassas}%) - mudar seus produtos de hortifruti para o corredor de hortifruti deve potencializar suas vendas!`;
-    } else if ((taxaConversaoHorti > taxaConversaoLimp || taxaConversaoMassas) && (qtdPessoasMassas > qtdPessoasHorti || qtdPessoasLimp)) {
-        mensagemHorti += `<br>(fluxo hortifruti: ${fluxoHorti}%) - Seu corredor está muito bem`;
-    }
 
-    if (taxaConversaoLimp > taxaConversaoHorti && qtdPessoasLimp < qtdPessoasHorti) {
-        mensagemLimp += `<br>(fluxo hortifruti: ${fluxoHorti}%) - mudar seus produtos de limpeza para o corredor de hortifruti deve potencializar suas vendas!`;
-    } else if (taxaConversaoLimp > taxaConversaoMassas && qtdPessoasLimp < qtdPessoasMassas) {
-        mensagemLimp += `<br>(fluxo massas: ${fluxoMassas}%) - mudar seus produtos de limpeza para o corredor de massas deve potencializar suas vendas!`;
-    }
+    textFluxoHorti.innerHTML = `${qtdPessoasHorti} (${fluxoHorti.toFixed(1)}% do dia)`;
+    textLucroHorti.innerHTML = `R$ ${lucroHorti}`;
+    textProdHorti.innerHTML = `${qtdVendaHorti}`;
+    textConvHorti.innerHTML = `${taxaConversaoHorti.toFixed(1)}%`;
+    textTpConvHorti.innerHTML = `${tpConvHorti}`;
 
-    conteudo = `
-    <div class="fundoResultado">
-        <h1>Resultado</h1>
+    textFluxoMassas.innerHTML = `${qtdPessoasMassas} (${fluxoMassas.toFixed(1)}% do dia)`;
+    textLucroMassas.innerHTML = `R$ ${lucroMassas}`;
+    textProdMassas.innerHTML = `${qtdVendaMassas}`;
+    textConvMassas.innerHTML = `${taxaConversaoMassas.toFixed(1)}%`;
+    textTpConvMassas.innerHTML = `${tpConvMassas}`;
 
-        <p>Com o média diaria de <b>${mediaPessoas}</b> clientes no supermercado</p>
+    textFluxoLimp.innerHTML = `${qtdPessoasLimp} (${fluxoLimp.toFixed(1)}% do dia)`;
+    textLucroLimp.innerHTML = `R$ ${lucroLimp}`;
+    textProdLimp.innerHTML = `${qtdVendaLimp}`;
+    textConvLimp.innerHTML = `${taxaConversaoLimp.toFixed(1)}%`;
+    textTpConvLimp.innerHTML = `${tpConvLimp}`;
 
-        <p>No corredor de hortifruti, com o fluxo de <b>${qtdPessoasHorti}</b></p>
-        <p>O equivalente a ${equivalenteHorti}% do valor total do dia</p>
+    textSugHorti.innerHTML = `${sugestaoHorti}`;
+    textSugMassas.innerHTML = `${sugestaoMassas}`;
+    textSugLimp.innerHTML = `${sugestaoLimp}`;
+}
 
-        <p>Gerando o lucro de R$${lucroHorti}</p>
 
-        <p>${qtdVendaHorti} produtos foram vendidos nesse corredor, totalizando uma taxa de conversão de ${taxaConversaoHorti}%</p>
-        
-        <br>
+function relatorio() {
+    div_relatorio.style.display = "block";
 
-        <p>
-            Horti:${mensagemHorti}<br>
-            Massas:${mensagemMassas}<br>
-            Limpeza:${mensagemLimp}<br>
-        </p>
-    
-        <div>
-            <button onclick="novamente()" class="btn2">Nova consulta</button>
-            <a href="index.html"><button class="btn2">Retornar ao site</button></a>
-        </div>
-    </div>
-    `;
+    div_lucroHorti.style.display = `block`;
+    div_prodHorti.style.display = `block`;
+    div_lucroMassas.style.display = `block`;
+    div_prodMassas.style.display = `block`;
+    div_lucroLimp.style.display = `block`;
+    div_prodLimp.style.display = `block`;
 
-    div_mainResultado.innerHTML = conteudo;
+    div_sugestaoHorti.style.display = "none";
+    div_sugestaoLimp.style.display = "none"
+    div_sugestaoMassas.style.display = "none"
+}
+
+function sugestao() {
+    div_lucroHorti.style.display = `none`;
+    div_prodHorti.style.display = `none`;
+    div_lucroMassas.style.display = `none`;
+    div_prodMassas.style.display = `none`;
+    div_lucroLimp.style.display = `none`;
+    div_prodLimp.style.display = `none`;
+
+    div_sugestaoHorti.style.display = "block";
+    div_sugestaoLimp.style.display = "block"
+    div_sugestaoMassas.style.display = "block"
 }
 
 function novamente() {
