@@ -18,5 +18,5 @@ document.querySelector('#registerForm').addEventListener('submit', function (e) 
     alert('Cadastro realizado com sucesso!');
 
     // Redirecionar para a página de login
-    window.location.href = '../site-institucional/index.html';
+    window.location.href = './site-institucional/index.html';
 });
