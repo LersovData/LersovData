@@ -82,15 +82,16 @@
 }
 
 .cadastrarLogin {
-    width: 70%;
-    height: 80%;
+    width: 54%;
+    height: 62%;
     border-radius: 10px;
-    background: rgb(116, 73, 235);
-    background: linear-gradient(177deg, rgba(77, 20, 199, 1) 0%, rgba(90, 35, 163, 1) 44%, rgba(97, 61, 201, 1) 98%);    font-family: Lato;
+    background: rgb(77, 20, 199);
+    background: linear-gradient(177deg, rgba(77, 20, 199, 1) 0%, rgb(55, 91, 211) 44%, rgba(23, 93, 243, 0.884) 98%);
+    font-family: Lato;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 10%;
+    padding-top: 3%;
     justify-content: space-around;
 }
 
@@ -100,6 +101,8 @@
     flex-direction: column;
     justify-content: space-between;
     height: 30%;
+    margin: 10px;
+    font-size: 22px;
 }
 
 .bemvindoH1 {
@@ -175,6 +178,7 @@
     justify-content: center;
     font-family: Lato;
     margin-top: 15%;
+    font-size: 22px;
 }
 
 .semconta a {
