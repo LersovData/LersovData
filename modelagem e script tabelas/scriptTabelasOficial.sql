@@ -15,7 +15,7 @@ CREATE TABLE empresa(
     numEnd varchar(45) not null,
     situacao varchar(45) not null,
     constraint chkSituacao
-		check (situacao in('aprovado', 'reprovado'))
+		check (situacao in('aprovado', 'reprovado', 'em aguardo'))
 ); 
 	INSERT INTO empresa VALUES
 		(1,'Assaí', '06.057.223/0001-71', 'assai@empresa', '123456ASSAI',
@@ -115,6 +115,36 @@ select nome as Nome,
     mensagem as 'Mensagem'
     FROM contato;
     
+    
+-- EMPRESA QUE ESTAMOS NOS REFERINDO: ASSAÍ
+    
+CREATE TABLE corredor(
+	idCorredor int primary key,
+    setor varchar(60),
+    fkEmpresa INT,
+    CONSTRAINT fkCorredorEmpresa
+		foreign key (fkEmpresa) REFERENCES empresa(id)
+);
+
+INSERT INTO corredor VALUES
+	(1,'Limpeza e Higiene', 1),
+    (3,'Adega', 1),
+    (4,'Massas', 1),
+    (7,'Doces', 1),
+    (6,'Utensílios', 1),
+    (5,'Congelados', 1),
+    (2,'Bebidas', 1);
+    
+    select * from corredor;
+    
+    SELECT C.idCorredor as Corredor,
+	C.setor as Setor,
+    E.nome as 'Empresa do corredor'
+    FROM corredor as C
+    JOIN empresa as E
+    ON C.fkEmpresa = E.id;
+    
+    
 CREATE TABLE sensor(
 	idSensor int primary key,
     tipo varchar(45),
@@ -124,25 +154,26 @@ CREATE TABLE sensor(
     manutencaoEmDia char(3),
 	constraint chkManutencao
 		check (manutencaoEmDia in('Sim', 'Não')),
-    fkEmpresa int,
-    constraint fkSensorEmpresa
-		foreign key (fkEmpresa) references empresa(id)
+    fkCorredor INT,
+    CONSTRAINT fkSensorCorredor
+		FOREIGN KEY (fkCorredor) REFERENCES corredor(idCorredor)
 );
 
 INSERT INTO sensor VALUES
 	(1,'TCRT5000', 'Ativado', 'Sim', 1),
     (2,'TCRT5000', 'Ativado', 'Sim', 1),
-    (3,'TCRT5000', 'Ativado', 'Sim', 1),
-    (4,'TCRT5000', 'Ativado', 'Sim', 1),
-    (5,'TCRT5000', 'Ativado', 'Sim', 1),
-    (6,'TCRT5000', 'Ativado', 'Sim', 1),
-    (7,'TCRT5000', 'Desativado', 'Não', 1),
-    (8,'TCRT5000', 'Desativado', 'Não', 1),
-    (9,'TCRT5000', 'Ativado', 'Sim', 3),
-    (10,'TCRT5000', 'Ativado', 'Sim', 3),
-    (11,'TCRT5000', 'Ativado', 'Sim', 3),
-    (12,'TCRT5000', 'Ativado', 'Sim', 3),
-    (13,'TCRT5000', 'Ativado', 'Não', 3);
+    (3,'TCRT5000', 'Ativado', 'Sim', 2),
+    (4,'TCRT5000', 'Ativado', 'Não', 2),
+    (5,'TCRT5000', 'Ativado', 'Sim', 3),
+    (6,'TCRT5000', 'Ativado', 'Sim', 3),
+    (7,'TCRT5000', 'Desativado', 'Não', 4),
+    (8,'TCRT5000', 'Desativado', 'Sim', 4),
+    (9,'TCRT5000', 'Ativado', 'Sim', 5),
+    (10,'TCRT5000', 'Ativado', 'Sim', 5),
+    (11,'TCRT5000', 'Ativado', 'Sim', 6),
+    (12,'TCRT5000', 'Ativado', 'Sim', 6),
+    (13,'TCRT5000', 'Ativado', 'Não', 7),
+    (14,'TCRT5000', 'Ativado', 'Sim', 7);
     
 select * from sensor;
 
@@ -154,31 +185,12 @@ select S.idSensor as Sensor,
     WHEN manutencaoEmDia = 'Não' THEN 'Fazer manutenção'
     ELSE 'Manutenção Feita'
     END as 'Necessidade de manutenção',
-    E.nome as 'Empresa'
+    C.idCorredor as 'Id Corredor',
+    C.setor as Setor
     FROM sensor as S
-    JOIN empresa as E
-    ON S.fkEmpresa = E.id;
+    JOIN corredor as C
+    ON S.fkCorredor = C.idCorredor;
 
-
-    
--- EMPRESA QUE ESTAMOS NOS REFERINDO: ASSAÍ
-
-CREATE TABLE corredor(
-	idCorredor int primary key,
-    setor varchar(60)
-);
-
-INSERT INTO corredor VALUES
-	(1,'Limpeza e Higiene'),
-    (3,'Adega'),
-    (4,'Massas'),
-    (7,'Doces'),
-    (6,'Utensílios'),
-    (5,'Congelados'),
-    (2,'Bebidas');
-    
-    select * from corredor;
-    
 
 CREATE TABLE alertas(
 	idAlerta int primary key,
@@ -203,42 +215,35 @@ CREATE TABLE dadosSensor(
 		foreign key (fkSensor) references sensor(idSensor),
 	dtHora datetime,
     fluxoDePessoas varchar(45),
-    fkCorredor int,
-	constraint fkDadosSensorCorredor
-		foreign key (fkCorredor) references corredor(idCorredor),
     fkAlerta int,
     constraint fkDadosSensorAlerta
 		foreign key (fkAlerta) references alertas(idAlerta)
 );
 
 INSERT INTO dadosSensor VALUES
-	(1,1, '2024-01-10 13:00:00', '1000', 1, 1),
-    (2,1, '2024-01-10 14:00:00', '990', 1, 1),
-    (1,2, '2024-01-10 13:00:00', '600', 2, 2),
-    (2,2, '2024-01-10 14:00:00', '610', 2, 2),
-    (1,3,'2024-01-10 13:00:00', '400', 3, 3),
-    (2,3,'2024-01-10 14:00:00', '410', 3, 3),
-    (1,4,'2024-01-10 13:00:00', '1200', 4, 1),
-    (2,4,'2024-01-10 14:00:00', '1235', 4, 1),
-    (1,5,'2024-01-10 13:00:00', '650', 5, 2),
-    (2,5,'2024-01-10 14:00:00', '630', 5, 2),
-    (1,6,'2024-01-10 13:00:00', '310', 6, 3),
-    (2,6,'2024-01-10 14:00:00', '300', 6, 3),
-    (1,7,'2024-01-10 13:00:00', '2000', 7, 1),
-    (2,7,'2024-01-10 14:00:00', '1990', 7, 1);
+	(1,1, '2024-01-10 13:00:00', '1000', 1),
+    (2,1, '2024-01-10 14:00:00', '990', 1),
+    (1,2, '2024-01-10 13:00:00', '600', 2),
+    (2,2, '2024-01-10 14:00:00', '610', 2),
+    (1,3,'2024-01-10 13:00:00', '400', 3),
+    (2,3,'2024-01-10 14:00:00', '410', 3),
+    (1,4,'2024-01-10 13:00:00', '1200', 1),
+    (2,4,'2024-01-10 14:00:00', '1235', 1),
+    (1,5,'2024-01-10 13:00:00', '650', 2),
+    (2,5,'2024-01-10 14:00:00', '630', 2),
+    (1,6,'2024-01-10 13:00:00', '310', 3),
+    (2,6,'2024-01-10 14:00:00', '300', 3),
+    (1,7,'2024-01-10 13:00:00', '2000', 1),
+    (2,7,'2024-01-10 14:00:00', '1990', 1);
     
 select * from dadosSensor;
 
-SELECT D.idDados as ID,
+SELECT D.idDados as 'ID dado',
 D.fkSensor as 'ID sensor',
 D.dtHora as 'Dia e hora',
 D.fluxoDePessoas as 'Quantidade de pessoas no corredor',
-fkCorredor as 'Corredor',
-C.setor as 'Setor do corredor',
 A.fluxo as 'Fluxo'
 FROM dadosSensor as D
-JOIN Corredor as C
-ON D.fkCorredor = C.idCorredor
 JOIN alertas as A
 ON D.fkAlerta = A.idAlerta;
 
@@ -248,12 +253,8 @@ SELECT D.idDados as ID,
 D.fkSensor as 'ID sensor',
 D.dtHora as 'Dia e hora',
 D.fluxoDePessoas as 'Quantidade de pessoas no corredor',
-fkCorredor as 'Corredor',
-C.setor as 'Setor do corredor',
 A.fluxo as 'Fluxo'
 FROM dadosSensor as D
-JOIN Corredor as C
-ON D.fkCorredor = C.idCorredor
 JOIN alertas as A
 ON D.fkAlerta = A.idAlerta
 WHERE idDados = 1 and fkSensor = 1;
