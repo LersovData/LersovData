@@ -70,7 +70,7 @@ header .container {
     color: #FFF;
 }
 
-.navbar a {
+.navbar .barra {
     position: relative;
     color: white;
     font-weight: bold;
@@ -79,7 +79,16 @@ header .container {
     transition: color 0.3s ease;
 }
 
-.navbar a::after {
+.navbar .navegacao {
+    position: relative;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.3s ease;
+}
+
+.navbar .navegacao::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -91,19 +100,19 @@ header .container {
     transform: translateX(-50%);
 }
 
-.navbar a:hover {
+.navbar .navegacao:hover {
     color: #ffffff;
 }
 
-.navbar a:hover::after {
+.navbar .navegacao:hover::after {
     width: 100%;
 }
 
-header.scrolled .navbar a {
+header.scrolled .navbar .navegacao {
     color: black;
 }
 
-header.scrolled .navbar a:hover::after {
+header.scrolled .navbar .navegacao:hover::after {
     background-color: #2720EC;
 }
 
@@ -162,6 +171,7 @@ header.scrolled .navbar a:hover::after {
 .spanBotaoHome {
     font-size: 1.5rem;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .botaoHome {
@@ -210,8 +220,8 @@ header.scrolled .navbar a:hover::after {
     color: #000;
 }
 
-.botaoHome:hover {
-    background-color: #555;
+.spanBotaoHome:hover {
+    font-size: 1.7rem;
 }
 
 .icon-size {
@@ -627,7 +637,6 @@ header.scrolled .navbar a:hover::after {
 }
 
 .areaEquipe .areaCards .card:hover {
-    flex: 2;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
