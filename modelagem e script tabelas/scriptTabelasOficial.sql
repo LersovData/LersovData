@@ -208,33 +208,33 @@ select * from alertas;
 
 
 CREATE TABLE dadosSensor(
-	idDados int,
+	idDados int auto_increment,
     fkSensor int,
     primary key(idDados, fkSensor),
     constraint fkDadosSensorSensor
 		foreign key (fkSensor) references sensor(idSensor),
-	dtHora datetime,
+	dtHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fluxoDePessoas varchar(45),
     fkAlerta int,
     constraint fkDadosSensorAlerta
 		foreign key (fkAlerta) references alertas(idAlerta)
 );
 
-INSERT INTO dadosSensor VALUES
-	(1,1, '2024-01-10 13:00:00', '1000', 1),
-    (2,1, '2024-01-10 14:00:00', '990', 1),
-    (1,2, '2024-01-10 13:00:00', '600', 2),
-    (2,2, '2024-01-10 14:00:00', '610', 2),
-    (1,3,'2024-01-10 13:00:00', '400', 3),
-    (2,3,'2024-01-10 14:00:00', '410', 3),
-    (1,4,'2024-01-10 13:00:00', '1200', 1),
-    (2,4,'2024-01-10 14:00:00', '1235', 1),
-    (1,5,'2024-01-10 13:00:00', '650', 2),
-    (2,5,'2024-01-10 14:00:00', '630', 2),
-    (1,6,'2024-01-10 13:00:00', '310', 3),
-    (2,6,'2024-01-10 14:00:00', '300', 3),
-    (1,7,'2024-01-10 13:00:00', '2000', 1),
-    (2,7,'2024-01-10 14:00:00', '1990', 1);
+INSERT INTO dadosSensor(fkSensor, fluxoDePessoas, fkAlerta) VALUES
+	(1,'1000', 1),
+    (1, '990', 1),
+    (2, '600', 2),
+    (2, '610', 2),
+    (3, '400', 3),
+    (3, '410', 3),
+    (4, '1200', 1),
+    (4, '1235', 1),
+    (5, '650', 2),
+    (5, '630', 2),
+    (6, '310', 3),
+    (6, '300', 3),
+    (7, '2000', 1),
+    (7, '1990', 1);
     
 select * from dadosSensor;
 

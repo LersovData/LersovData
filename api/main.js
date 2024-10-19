@@ -21,7 +21,7 @@ const serial = async (
             host: 'localhost',
             user: 'aluno',
             password: 'Sptech#2024',
-            database: 'teste',
+            database: 'lersov',
             port: 3307
         }
     ).promise();
@@ -60,7 +60,7 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "sensor"
             await poolBancoDados.execute(
-                'INSERT INTO sensor (num) VALUES (?)',
+                'INSERT INTO dadosSensor (fkSensor, fluxoDePessoas, fkAlerta) VALUES (1, ?, 1)',
                 [sensorDigital]
             );
             console.log("valores inseridos no banco: " + sensorDigital);
