@@ -30,6 +30,13 @@ body {
     color: #ffffff;
 }
 
+#tipo {
+    color: #000;
+}
+#tipo option {
+    color: #000;
+}
+
 .main {
     display: flex;
     width: 100%;
